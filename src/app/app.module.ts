@@ -24,6 +24,7 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { LoginService } from './views/login/login.service';
 import { RegisterComponent } from './views/register/register.component';
+import { CreateDepartmentComponent } from './views/create-department/create-department.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -71,6 +72,7 @@ import { ChartsModule } from 'ng2-charts';
     P500Component,
     LoginComponent,
     RegisterComponent,
+    CreateDepartmentComponent,
   ],
   providers: [
     LoginService,

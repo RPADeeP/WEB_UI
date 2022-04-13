@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { registerUserData } from './register.model';
-
 @Injectable({ providedIn: 'root' })
 export class RegisterService {
     registerUrl = 'http://26.237.245.64:8080/auth/registry';
@@ -22,13 +20,4 @@ export class RegisterService {
                 password}
             );
     }
-
-    // public Register(firstName, lastName, password){
-    //     return this.http.post(
-    //         this.registerUrl,
-    //         firstName,
-    //         lastName,
-    //         password
-    //     )
-    // }
 }
