@@ -14,6 +14,35 @@
                     </div>
                     <input [(ngModel)]="departmentName" name="departmentName" type="text" class="form-control" placeholder="Department name" autocomplete="departmentName" required>
                   </div>
+                  <div class="dropdown">
+                    <!-- <select class="btn btn-outline-primary dropdown-toggle" name="roleDropdown" id="roleDropdown" placeholder="Department name">
+                      <option value="HR">HR</option>
+                      <option value="Someone">Someone1</option>
+                      <option value="Someone" selected>Someone2</option>
+                      <option value="Someone">Someone3</option>
+                    </select> -->
+                    <select class="btn btn-outline-primary dropdown-toggle mb-3" formControlName="cityName">
+                      <option value="">Choose Role</option>
+                      <!-- <option *ngFor="let city of City" [ngValue]="city">
+                        {{ city }}
+                      </option> -->
+                    </select>
+                  </div>
+                  
+                  <button (click)="createDep()" type="button" class="btn btn-block btn-success">Create</button>
+                </form>
+                <div>
+                  
+                </div>
+                <form>
+                  <h1 class="text-center">Create role</h1>
+                  <p class="text-center">Create new role</p>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input [(ngModel)]="departmentName" name="departmentName" type="text" class="form-control" placeholder="Role name" autocomplete="departmentName" required>
+                  </div>
                   <button (click)="createDep()" type="button" class="btn btn-block btn-success">Create</button>
                 </form>
                 <div class="card-body text-center">
