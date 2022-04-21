@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class CreateDepartmentService {
-    registerUrl = 'http://26.237.245.64:8080/auth/registry';
+    registerUrl = 'http://26.237.245.64:8080/auth/create_department';
 
     constructor(private http: HttpClient){}
 

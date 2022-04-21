@@ -11,13 +11,9 @@ import { createdDepartmentData } from './create-department.model';
 export class CreateDepartmentComponent implements OnInit {
 
   constructor(private http: HttpClient, private createDepartmentService: CreateDepartmentService) { }
-  //user: registerUserData;
+  
   departmentName: createdDepartmentData;
-  // middleName: createdDepartmentData;
-  // lastName: createdDepartmentData;
-  // password: createdDepartmentData;
-  //passwordConfirm: any;
-
+  
   ngOnInit(): void {
   }
   createDep() {
