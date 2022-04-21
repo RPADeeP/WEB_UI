@@ -13,7 +13,7 @@ import { CreateDepartmentComponent } from './views/create-department/create-depa
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {

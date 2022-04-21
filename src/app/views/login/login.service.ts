@@ -10,7 +10,8 @@ export class LoginService {
         password = btoa(password);
         console.log(password)
         return this.http.post(this.loginUrl, 
-            {code,password}
+            {code,password},
+            { responseType: 'text'}
             )
     }
 }
