@@ -25,6 +25,7 @@ import { LoginComponent } from './views/login/login.component';
 import { LoginService } from './views/login/login.service';
 import { RegisterComponent } from './views/register/register.component';
 import { CreateDepartmentComponent } from './views/create-department/create-department.component';
+import { DepartmentsComponent } from './views/departments/departments.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -45,6 +46,7 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   imports: [
@@ -74,6 +76,7 @@ import { ChartsModule } from 'ng2-charts';
     LoginComponent,
     RegisterComponent,
     CreateDepartmentComponent,
+    DepartmentsComponent,
   ],
   providers: [
     LoginService,
