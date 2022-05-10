@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class CreateDepartmentService {
+
     createDepUrl = 'http://26.237.245.64:8080/auth/create_department';
 
     constructor(private http: HttpClient){}
@@ -17,12 +18,27 @@ export class CreateDepartmentService {
         );
     }
 
-    createRoleUrl = 'http://26.237.245.64:8080/auth/create_department';
-    createRole(roleName) {
-        console.log({roleName});
+    createRoleUrl = 'http://26.237.245.64:8080/role/create';
+    createRole(roleName, 
+        isGeneralStatisticAvailable, 
+        isProcessCreatorAvailable, 
+        isJiraAvailable, 
+        isAddingStaffAvailable,
+        companyToken) {
+        console.log({roleName,
+            isGeneralStatisticAvailable, 
+            isProcessCreatorAvailable, 
+            isJiraAvailable, 
+            isAddingStaffAvailable,
+            companyToken});
         return this.http.post(this.createRoleUrl,
             {
-                roleName
+                roleName,
+                isGeneralStatisticAvailable, 
+                isProcessCreatorAvailable, 
+                isJiraAvailable, 
+                isAddingStaffAvailable,
+                companyToken
             }
         );
     }

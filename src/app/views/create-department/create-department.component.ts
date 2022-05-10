@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CreateDepartmentService } from './create-department.service';
-import { createdDepartmentData } from './create-department.model';
+import { createdDepartmentData, createdRoleData } from './create-department.model';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -15,9 +15,13 @@ export class CreateDepartmentComponent implements OnInit {
   
   departmentName: createdDepartmentData;
   choosenRole: createdDepartmentData;
-  roleName: createdDepartmentData;
 
-  isSubmitted = false;
+  roleName: createdRoleData;
+  isGeneralStatisticAvailable: createdRoleData;
+  isProcessCreatorAvailable: createdRoleData;
+  isJiraAvailable: createdRoleData;
+  isAddingStaffAvailable: createdRoleData;
+  companyToken: createdRoleData;
 
   Role: any = ['HR', 'Marketing', 'Developing', 'Assembly'];
   // Role: any;
@@ -28,15 +32,31 @@ export class CreateDepartmentComponent implements OnInit {
     // })
   }
 
+  myFunction() {
+    document.getElementById("iconDrodown").classList.toggle("cil-chevron-top");
+    document.getElementById("iconDrodown").classList.toggle("cil-chevron-bottom");
+  }
+
   createDep() {
     console.log(this.departmentName, this.choosenRole)
     this.createDepartmentService.createDep(this.departmentName, this.choosenRole).subscribe();
   }
 
   createRole(){
-    console.log(this.roleName)
+    console.log(
+      this.roleName, 
+      this.isGeneralStatisticAvailable, 
+      this.isProcessCreatorAvailable, 
+      this.isJiraAvailable, 
+      this.isAddingStaffAvailable,
+      this.companyToken)
     this.Role.push(this.roleName) //TODO Maybe Role.push put into subscribe
-    this.createDepartmentService.createRole(this.roleName).subscribe(
+    this.createDepartmentService.createRole(this.roleName, 
+      this.isGeneralStatisticAvailable, 
+      this.isProcessCreatorAvailable, 
+      this.isJiraAvailable, 
+      this.isAddingStaffAvailable,
+      this.companyToken).subscribe(
       
     );
   }

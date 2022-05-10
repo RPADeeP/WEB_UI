@@ -1,5 +1,12 @@
 export class createdDepartmentData {
     depatmentName: string;
     choosenRole: any;
-    roleName: any;
     }
+export class createdRoleData {
+    roleName: string;
+    isGeneralStatisticAvailable: boolean;
+    isProcessCreatorAvailable: boolean;
+    isJiraAvailable: boolean;
+    isAddingStaffAvailable: boolean;
+    companyToken: string;
+}

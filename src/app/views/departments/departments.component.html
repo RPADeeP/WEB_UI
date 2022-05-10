@@ -2,25 +2,7 @@
   <main class="main d-flex align-items-center">
     <div class="container ">
       <div class="row">
-            <!-- <div *ngFor="let department of Departments" class="col-md-auto mx-auto card text-white bg-info"  >
-              <div class="btn-group float-right " dropdown>
-                <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
-                  <i class="icon-settings"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-                  <a class="dropdown-item" href="#">Update</a>
-                  <a class="dropdown-item" href="#">Delite</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </div>
-                <div class="card-body p-4" [value]="department.id">
-                  <h1>{{ department.depatmentName }}</h1>
-                  <div>Chosen role: {{ department.choosenRole }}</div>
-                  <div>Number of workers: {{ department.numberOfWorkers }}</div>
-                  <div>Workers online: {{ department.workersOnline }}</div>
-                  </div>
-              </div> -->
+            
               <!-- should be space -->
               <div *ngFor="let department of Departments" class="col-sm-6 col-lg-4">
                 <div class="card text-white bg-info"> 
@@ -32,7 +14,7 @@
                       </button>
                       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
                         <a class="dropdown-item" href="#">Update</a>
-                        <a class="dropdown-item" href="#">Delite</a>
+                        <a class="dropdown-item" href="#">Delete</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                       </div>
