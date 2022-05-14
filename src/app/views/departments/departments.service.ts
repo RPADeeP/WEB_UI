@@ -7,6 +7,12 @@ export class DepartmentsService {
 
     constructor(private http: HttpClient){}
 
+    departUrl = 'http://26.237.245.64:8081/';
+    
+    getAllDeparts(token){
+        return this.http.get(this.departUrl + 'department/get-all/'+  token)
+    }
+
     // createDep(departmentName, choosenRole) {
     //     console.log({departmentName, choosenRole});
     //     return this.http.post(this.createDepUrl,

@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { createdDepartmentData, createdRoleData} from './create-department.model';
 
 @Injectable({ providedIn: 'root' })
 export class CreateDepartmentService {
@@ -18,14 +19,31 @@ export class CreateDepartmentService {
         );
     }
 
-    createRoleUrl = 'http://26.237.245.64:8080/role/create';
-    createRole(roleName, 
+    jwt = localStorage.getItem('jwtToken')
+    
+    
+    httpOptions = {
+        headers: new HttpHeaders(
+            // { 
+            //     'Content-Type': 'application/json',
+            //     'Authorization': 'Bearer ' + this.jwt
+            // }
+        ).set('Authorization',  'Bearer ' + this.jwt)
+    };
+
+    getRoleDeparts(token){
+        console.log(this.jwt);
+        return this.http.get('http://26.237.245.64:8081/role/get-all/' +  token,  this.httpOptions)
+    }
+
+    createRoleUrl = 'http://26.237.245.64:8081/role/create';
+    createRole(name, 
         isGeneralStatisticAvailable, 
         isProcessCreatorAvailable, 
         isJiraAvailable, 
         isAddingStaffAvailable,
         companyToken) {
-        console.log({roleName,
+        console.log({name,
             isGeneralStatisticAvailable, 
             isProcessCreatorAvailable, 
             isJiraAvailable, 
@@ -33,13 +51,14 @@ export class CreateDepartmentService {
             companyToken});
         return this.http.post(this.createRoleUrl,
             {
-                roleName,
+                name,
                 isGeneralStatisticAvailable, 
                 isProcessCreatorAvailable, 
                 isJiraAvailable, 
                 isAddingStaffAvailable,
                 companyToken
-            }
+            },
+            this.httpOptions
         );
     }
 }

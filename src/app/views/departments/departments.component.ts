@@ -10,7 +10,7 @@ import { DepartmentsData } from './departments.model';
 })
 export class DepartmentsComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private DepartmentsService: DepartmentsService) { }
 
   Departments: DepartmentsData[] = [
     {id: 0, depatmentName: 'HR', choosenRole: 'Hr', numberOfWorkers: 25, workersOnline: 15},
@@ -19,10 +19,11 @@ export class DepartmentsComponent implements OnInit {
     {id: 3, depatmentName: 'Assembly', choosenRole: 'Assembly', numberOfWorkers: 50, workersOnline: 49}
   ];
 
+  returnedData: any;
   ngOnInit(): void {
-    // this.http.get<Array<object>>('http://26.237.245.64:8080/auth/create_department').subscribe(data => {
-    //     this.Role = data;
-    // })
+    // console.log(typeof(this.DepartmentsService.getAllDeparts(JSON.parse(localStorage.getItem('companyToken')))));
+    // this.returnedData = this.DepartmentsService.getAllDeparts(JSON.parse(localStorage.getItem('companyToken')));
+    // this.Role = this.returnedData;
   }
 
   update(){

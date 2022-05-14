@@ -11,6 +11,10 @@ export class Serv {
         return this.http.get(this.usersUrl  + 'user/add-token/'+  token)
     }
 
+    public createCompany(name){
+      return this.http.post(this.departUrl + '/company/create', { name })
+    }
+
     public getAllUsers(token){
       return this.http.get(this.usersUrl + 'user/get-all/'+  token)
   }

@@ -16,8 +16,8 @@
                 </div>
                 <div class="dropdown text-center">
                   <select [(ngModel)]="choosenRole" name="roleName" type="text" class="btn btn-outline-primary dropdown-toggle mb-3" autocomplete="roleName" required>
-                    <option *ngFor="let role of Role" [value]="role">
-                      {{ role }}
+                    <option *ngFor="let role of Role" [ngValue]="role">
+                      {{ role.roleName }}
                     </option>
                   </select>
                 </div>
@@ -27,7 +27,7 @@
 
             <!-- <div>
               <div class="btn-group float-right" dropdown>
-                <button type="button" class="btn btn-transparent p-0" dropdownToggle (click)="myFunction()">
+                <button type="button" class="btn btn-transparent p-0" dropdownToggle (click)="toggleDropdownArrowClass()">
                   <i id="iconDrodown" class="cil-chevron-top"></i>
                 </button>
                 

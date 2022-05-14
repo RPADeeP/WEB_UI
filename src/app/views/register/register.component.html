@@ -22,7 +22,7 @@
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text">@</span>
+                    <span class="input-group-text"><i class="icon-user"></i></span>
                   </div>
                   <input [(ngModel)]="lastName" name="lastName" type="text" class="form-control" placeholder="Last name" autocomplete="lastName" required>
                 </div>
@@ -38,11 +38,40 @@
                   </div>
                   <input [(ngModel)]="registerUserData.new-password" name="new-password" type="password" class="form-control" placeholder="Repeat password" autocomplete="new-password" required>
                 </div> -->
-                <button (click)="register()" type="button" class="btn btn-block btn-primary">Create Account</button>
+                <button (click)="register()" type="button" class="btn btn-block btn-primary">Create new company</button>
+                <button (click)="register()" type="button" class="btn btn-block btn-primary">Join to the company</button>
               </form>
               <div class="card-body text-center">
                 <a class="" [routerLink]="['/login']"><i class="fa fa-long-arrow-left"></i> Back to login</a>
               </div>
+            </div>
+          </div>
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <form>
+                <h1>Create your company</h1>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input [(ngModel)]="companyName" name="companyName" type="text" class="form-control" placeholder="Your company name" autocomplete="companyName" required>
+                </div>
+                <button (click)="register()" type="button" class="btn btn-block btn-primary">Create company</button>
+              </form>
+            </div>
+          </div>
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <form>
+                <h1>Or join the company</h1>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input [(ngModel)]="companyToken" name="companyToken" type="text" class="form-control" placeholder="Company token" autocomplete="companyName" required>
+                </div>
+                <button (click)="register()" type="button" class="btn btn-block btn-primary">Create Account</button>
+              </form>
             </div>
           </div>
         </div>

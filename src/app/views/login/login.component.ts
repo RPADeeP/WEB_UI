@@ -13,16 +13,22 @@ export class LoginComponent {
   password: User;
   code: User;
   
-
+  returnedData: any;
   onClickLogin(){
     this.loginService.login(this.code,this.password).subscribe(
-      this.goTO
+      
+      (data: any) => { 
+        this.returnedData=data; 
+        if (this.returnedData) {
+          localStorage.setItem('companyToken', this.returnedData.companyToken); 
+          localStorage.setItem('jwtToken', this.returnedData.jwtToken); 
+          this.router.navigate(['/dashboard']);
+        }
+        else {
+          console.error('ERROR');
+        }
+      }
     );
-    
-  }
-  goTO(){
-    console.log("aaaa")
-    this.router.navigateByUrl('/dashboard')
-    //this.router.navigate(['/dashboard'])
+    // console.log(this.loginService.login(this.code,this.password));
   }
 }
