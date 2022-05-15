@@ -13,7 +13,20 @@ export const navItems: INavData[] = [
     url: '/charts',
     icon: 'icon-pie-chart'
   },
-  
+
+  {
+    name: 'Special',
+    url: '/pages',
+    icon: 'icon-star',
+    children: [
+      {
+        name: 'Create roles',
+        url: '/create-role',
+        icon: 'icon-star'
+      },
+    ]
+  },
+
   {
     divider: true
   },

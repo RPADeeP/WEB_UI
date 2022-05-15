@@ -37,25 +37,6 @@ export class RegisterComponent implements OnInit {
     document.getElementById("registerForm").classList.toggle("hide");
   }
 
-  // createCompany(){
-  //   this.registerService.createCompany(this.companyName).subscribe(
-  //     (data: any) => { 
-  //       this.returnedData=data; 
-  //       if (this.returnedData) {
-  //         this.companyToken = this.returnedData.companyToken;
-  //         // this.registerService.register(this.firstName, this.middleName, this.lastName, this.password, this.companyToken).subscribe();
-  //         // this.register();
-  //         // localStorage.setItem('companyToken', this.returnedData.companyToken); 
-  //         // localStorage.setItem('jwtToken', this.returnedData.jwtToken);
-  //         // this.router.navigate(['/dashboard']);
-  //       }
-  //       else {
-  //         console.error('ERROR');
-  //       }
-  //     }
-  //   );
-  // }
-
   register() {
     console.log(this.firstName, this.middleName, this.lastName, this.password, this.companyToken, this.companyName)
     this.registerService.register(this.firstName, this.middleName, this.lastName, this.password, this.companyToken, this.companyName).subscribe(
