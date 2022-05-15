@@ -30,10 +30,17 @@ export class CreateDepartmentService {
             // }
         ).set('Authorization',  'Bearer ' + this.jwt)
     };
-
+    
     getRoleDeparts(token){
         console.log(this.jwt);
-        return this.http.get('http://26.237.245.64:8081/role/get-all/' +  token,  this.httpOptions)
+        return this.http.get('http://26.237.245.64:8081/role/get-all/' +  token,  
+            {
+                headers: new HttpHeaders({
+                    'Content-Type':  'application/json',
+                    'Authorization': 'Bearer ' + this.jwt,
+                })
+            }
+        )
     }
 
     createRoleUrl = 'http://26.237.245.64:8081/role/create';

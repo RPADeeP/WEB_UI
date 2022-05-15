@@ -7,7 +7,7 @@ export class LoginService {
     constructor(private http: HttpClient) { }
 
     public login( code, password ){
-        // password = btoa(password);
+        password = btoa(password);
         console.log(password)
         return this.http.post(this.loginUrl, 
             {code,password}

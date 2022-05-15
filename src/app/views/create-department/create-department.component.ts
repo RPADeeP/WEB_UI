@@ -37,7 +37,7 @@ export class CreateDepartmentComponent implements OnInit {
   
   returnedData: any;
   ngOnInit(): void {
-    console.log(localStorage.getItem('companyToken')) //
+    console.log(localStorage.getItem('companyToken'))
     // this.companyToken = localStorage.getItem('companyToken');
     console.log(this.createDepartmentService.getRoleDeparts(JSON.stringify(localStorage.getItem('companyToken'))));
     this.createDepartmentService.getRoleDeparts(JSON.stringify(localStorage.getItem('companyToken'))).subscribe(); //

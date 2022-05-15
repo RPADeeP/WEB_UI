@@ -7,7 +7,8 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: 'register.component.html'
+  templateUrl: 'register.component.html',
+  styleUrls: ['register.component.scss']
 })
 export class RegisterComponent implements OnInit {
 
@@ -25,27 +26,35 @@ export class RegisterComponent implements OnInit {
   //passwordConfirm: any;
 
   ngOnInit(): void {
-    
   }
 
-  createCompany(){
-    this.registerService.createCompany(this.companyName).subscribe(
-      (data: any) => { 
-        this.returnedData=data; 
-        if (this.returnedData) {
-          this.companyToken = this.returnedData.companyToken;
-          // this.registerService.register(this.firstName, this.middleName, this.lastName, this.password, this.companyToken).subscribe();
-          // this.register();
-          // localStorage.setItem('companyToken', this.returnedData.companyToken); 
-          // localStorage.setItem('jwtToken', this.returnedData.jwtToken);
-          // this.router.navigate(['/dashboard']);
-        }
-        else {
-          console.error('ERROR');
-        }
-      }
-    );
+  hideJoin(){
+    document.getElementById("createCompany").classList.toggle("hide");
+    document.getElementById("registerForm").classList.toggle("hide");
   }
+  hideCreate(){
+    document.getElementById("joinCompany").classList.toggle("hide");
+    document.getElementById("registerForm").classList.toggle("hide");
+  }
+
+  // createCompany(){
+  //   this.registerService.createCompany(this.companyName).subscribe(
+  //     (data: any) => { 
+  //       this.returnedData=data; 
+  //       if (this.returnedData) {
+  //         this.companyToken = this.returnedData.companyToken;
+  //         // this.registerService.register(this.firstName, this.middleName, this.lastName, this.password, this.companyToken).subscribe();
+  //         // this.register();
+  //         // localStorage.setItem('companyToken', this.returnedData.companyToken); 
+  //         // localStorage.setItem('jwtToken', this.returnedData.jwtToken);
+  //         // this.router.navigate(['/dashboard']);
+  //       }
+  //       else {
+  //         console.error('ERROR');
+  //       }
+  //     }
+  //   );
+  // }
 
   register() {
     console.log(this.firstName, this.middleName, this.lastName, this.password, this.companyToken, this.companyName)
