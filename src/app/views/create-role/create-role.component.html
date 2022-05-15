@@ -4,20 +4,35 @@
         <div class="row">
           <div class="col-md-6 mx-auto">
             <div class="card mx-4">
-              <!-- <div>
-                <div class="btn-group float-right" dropdown>
-                  <button type="button" class="btn btn-transparent p-0" dropdownToggle (click)="toggleDropdownArrowClass()">
-                    <i id="iconDrodown" class="cil-chevron-top"></i>
+              <div *ngFor="let role of Role" class="align">
+                <div class="btn-group" dropdown>
+                  <button type="button" class="btn p-0" dropdownToggle (click)="toggleDropdownArrowClass()">
+                    {{ role.name }} <i id="iconDrodown" class="cil-chevron-top"></i>
                   </button>
                   
                   <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-                    <a class="dropdown-item" href="#">Update</a>
-                    <a class="dropdown-item" href="#">Delete</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    {{ role.isGeneralStatisticAvailable }}
+                      {{ role.isProcessCreatorAvailable }}
+                      {{ role.isJiraAvailable }}
+                      {{ role.isAddingStaffAvailable }}
                   </div>
                 </div>
-              </div> -->
+                <!-- btn-transparent -->
+              </div>
+              <div class="card-body p-4">
+                <div class="dropdown text-center" *ngFor="let role of Role">
+                    {{ role.name }}
+                  <select [(ngModel)]="choosenRole" name="roleName" type="text" class="btn btn-outline-primary dropdown-toggle mb-3" autocomplete="roleName" required>
+                    <option  [ngValue]="role">
+                      
+                      {{ role.isGeneralStatisticAvailable }}
+                      {{ role.isProcessCreatorAvailable }}
+                      {{ role.isJiraAvailable }}
+                      {{ role.isAddingStaffAvailable }}
+                    </option>
+                  </select>
+                </div>
+              </div>
               <div class="card-body p-4">
                 <form>
                   <h1 class="text-center">Create role</h1>
@@ -51,12 +66,6 @@
                       <label>Is Adding Staff Available:</label>
                     </div>
                     <input type="checkbox" [(ngModel)]="isAddingStaffAvailable" name="isAddingStaffAvailable" class="form-control" autocomplete="isAddingStaffAvailable" required/>
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-user"></i></span>
-                    </div>
-                    <input [(ngModel)]="companyToken" name="companyToken" type="text" class="form-control" placeholder="Company token" autocomplete="companyToken" required>
                   </div>
   
                   <button (click)="createRole()" type="button" class="btn btn-block btn-success">Create</button>

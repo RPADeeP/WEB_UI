@@ -7,6 +7,8 @@ export class Serv {
     departUrl = 'http://26.237.245.64:8081/';
     constructor(private http: HttpClient) { }
 
+    // http://26.237.245.64:8080/user/get-one/
+
     public createToken(token){
         return this.http.get(this.usersUrl  + 'user/add-token/'+  token)
     }

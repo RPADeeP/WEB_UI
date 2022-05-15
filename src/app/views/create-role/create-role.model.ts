@@ -1,5 +1,5 @@
 export class createdRoleData {
-    roleName: string;
+    name: string;
     isGeneralStatisticAvailable: boolean;
     isProcessCreatorAvailable: boolean;
     isJiraAvailable: boolean;
