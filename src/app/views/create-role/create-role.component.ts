@@ -20,38 +20,17 @@ export class CreateRoleComponent implements OnInit {
   isAddingStaffAvailable: createdRoleData;
   companyToken: string;
 
-  choosenRole: any;
-
-  // Role: createdRoleData[] = [
-  //   {roleName: 'HR', isGeneralStatisticAvailable: true, isProcessCreatorAvailable: true, isJiraAvailable: false, isAddingStaffAvailable: true, companyToken: 's6d5f4'},
-  //   {roleName: 'Marketing', isGeneralStatisticAvailable: true, isProcessCreatorAvailable: true, isJiraAvailable: true, isAddingStaffAvailable: true, companyToken: '4t9rj84'},
-  //   {roleName: 'Developing', isGeneralStatisticAvailable: true, isProcessCreatorAvailable: true, isJiraAvailable: true, isAddingStaffAvailable: false, companyToken: '0x6cv51b'},
-  //   {roleName: 'Assembly', isGeneralStatisticAvailable: true, isProcessCreatorAvailable: true, isJiraAvailable: true, isAddingStaffAvailable: false, companyToken: '9a08f4e'}
-  // ];
-
-  // Role: any = ['HR', 'Marketing', 'Developing', 'Assembly'];
   Role: createdRoleData[];
   
   returnedData: any;
   ngOnInit(): void {
-    // console.log(localStorage.getItem('companyToken'))
     this.companyToken = localStorage.getItem('companyToken');
-    // console.log(this.CreateRoleService.getRoleDeparts(JSON.stringify(localStorage.getItem('companyToken'))));
     this.CreateRoleService.getRoleDeparts(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Role=data; 
         console.log(this.Role);
-        // if (this.returnedData) {
-        //   localStorage.setItem('companyToken', this.returnedData.companyToken); 
-        //   localStorage.setItem('jwtToken', this.returnedData.jwtToken);
-        // }
-        // else {
-        //   console.error('ERROR');
-        // }
       }
-    ); //
-    // console.log(this.returnedData)
-    // this.Role = this.returnedData;
+    );
   }
 
   toggleExistingRolesDropdown() {

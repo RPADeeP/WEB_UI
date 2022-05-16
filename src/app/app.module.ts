@@ -28,6 +28,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { CreateDepartmentComponent } from './views/create-department/create-department.component';
 import { DepartmentsComponent } from './views/departments/departments.component';
 import { CreateRoleComponent } from './views/create-role/create-role.component';
+import { UsersComponent } from './views/users/users.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -48,6 +49,7 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+
 
 
 @NgModule({
@@ -81,6 +83,7 @@ import { ChartsModule } from 'ng2-charts';
     CreateDepartmentComponent,
     DepartmentsComponent,
     CreateRoleComponent,
+    UsersComponent,
     
   ],
   providers: [

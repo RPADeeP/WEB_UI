@@ -11,6 +11,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { CreateDepartmentComponent } from './views/create-department/create-department.component';
 import { DepartmentsComponent } from './views/departments/departments.component';
 import { CreateRoleComponent } from './views/create-role/create-role.component';
+import { UsersComponent } from './views/users/users.component';
 
 export const routes: Routes = [
   {
@@ -65,6 +66,13 @@ export const routes: Routes = [
     component: CreateRoleComponent,
     data: {
       title: 'Create Role Page'
+    }
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    data: {
+      title: 'Users Page'
     }
   },
   {
