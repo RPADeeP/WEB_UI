@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,6 +53,7 @@ import { ChartsModule } from 'ng2-charts';
 @NgModule({
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -79,6 +81,7 @@ import { ChartsModule } from 'ng2-charts';
     CreateDepartmentComponent,
     DepartmentsComponent,
     CreateRoleComponent,
+    
   ],
   providers: [
     LoginService,
