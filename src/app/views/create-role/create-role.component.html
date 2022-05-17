@@ -11,7 +11,7 @@
                     <div id="existingRoles" class="hide">
                         <div *ngFor="let role of Role">
                             <button type="button" class="btn-group btn" (click)="toggleRoleDropdown(role.name)" style="width:100%">
-                                {{ role.name }} <i id="iconDrodown" class="cil-chevron-top"></i>
+                                {{ role.name }} <i attr.id="iconDrodown{{role.name}}" class="cil-chevron-top"></i>
                             </button>
                             <div attr.id="{{role.name}}" class="hide"> 
                                 

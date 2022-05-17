@@ -28,6 +28,10 @@ export class DashboardService {
         return this.http.get(this.usersUrl + 'user/get-current-user/', this.httpOptions)
     }
 
+    getAllUsers(token){
+        return this.http.get(this.usersUrl + 'user/get-all/'+  token, this.httpOptions)
+    }
+
     getOneUser(){
 
     }

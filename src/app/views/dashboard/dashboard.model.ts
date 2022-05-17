@@ -1,7 +1,7 @@
 export class DepartmentsData {
     id: id;
     name: string;
-    users: user;
+    users: user[];
     companyToken: string;
 }
 export class id {

@@ -39,10 +39,9 @@ export class CreateRoleComponent implements OnInit {
     document.getElementById("existingRoles").classList.toggle("hide");
   }
   toggleRoleDropdown(ind) {
-    // document.getElementById("iconDrodown").classList.toggle("cil-chevron-top");
-    // document.getElementById("iconDrodown").classList.toggle("cil-chevron-bottom");
-    console.log(ind)
     document.getElementById(ind).classList.toggle("hide");
+    document.getElementById("iconDrodown" + ind).classList.toggle("cil-chevron-top");
+    document.getElementById("iconDrodown" + ind).classList.toggle("cil-chevron-bottom");
   }
 
   createRole(){
