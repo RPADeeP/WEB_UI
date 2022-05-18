@@ -2,11 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class DashboardService {
+export class UsersService {
 
     constructor(private http: HttpClient){}
 
-    departUrl = 'http://26.237.245.64:8081/';
     usersUrl = 'http://26.237.245.64:8080/';
 
     jwt = localStorage.getItem('jwtToken')
@@ -19,27 +18,17 @@ export class DashboardService {
             }
         )
     };
-    
-    getAllDeparts(token){
-        return this.http.get(this.departUrl + 'department/get-all/'+  token, this.httpOptions)
-    }
-
-    getCurrentUser(){
-        return this.http.get(this.usersUrl + 'user/get-current-user/', this.httpOptions)
-    }
 
     getAllUsers(token){
         return this.http.get(this.usersUrl + 'user/get-all/'+  token, this.httpOptions)
     }
-    
-    addUserToDepartment(name,users,companyToken){
-        console.log({name, users, companyToken})
-        return this.http.post(this.departUrl + 'department/add-users',
-        {
-          name,
-          users,
-          companyToken
-        },
-        this.httpOptions)
+
+    addRoleToUser(userId, assignRole){
+        console.log({userId, assignRole})
+        return this.http.post(this.usersUrl + 'user/add-role-to-user', {userId, assignRole}, this.httpOptions)
+    }
+
+    getAllRoles(token){
+        return this.http.get(this.usersUrl + 'role/get-all/' +  token,  this.httpOptions)
     }
 }

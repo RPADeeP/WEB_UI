@@ -20,11 +20,8 @@ export class DashboardComponent implements OnInit {
       lastName:"Some", 
       middleName:"Somathing", 
       companyToken: "6280ad6a8647ee27a6a8e37f", 
-      id:
-      {
-        timestamp: 138578, 
-        date: "02-05-2000"
-      }, code:483532,
+      id: "", 
+      code:483532,
       role: 
       {
         name:"admin",
@@ -32,7 +29,8 @@ export class DashboardComponent implements OnInit {
         isProcessCreatorAvailable:true,
         isJiraAvailable:true,
         isAddingStaffAvailable:true,
-        companyToken:""
+        companyToken:"",
+        id: ""
       },
     },
     {
@@ -40,11 +38,8 @@ export class DashboardComponent implements OnInit {
       lastName:"asfdsafd", 
       middleName:"adsfasdf", 
       companyToken: "6280ad6a8647ee27a6a8e37f", 
-      id:
-      {
-        timestamp: 138578, 
-        date: "02-05-2000"
-      }, code:483532,
+      id: "",
+      code:483532,
       role: 
       {
         name:"asdfsdf",
@@ -52,7 +47,8 @@ export class DashboardComponent implements OnInit {
         isProcessCreatorAvailable:true,
         isJiraAvailable:true,
         isAddingStaffAvailable:true,
-        companyToken:""
+        companyToken:"",
+        id: ""
       },
     },
     {
@@ -60,31 +56,37 @@ export class DashboardComponent implements OnInit {
       lastName:"adfasfd", 
       middleName:"adsfasdf", 
       companyToken: "6280ad6a8647ee27a6a8e37f", 
-      id:
+      id: "", 
+      code:483532,
+      role: 
       {
-        timestamp: 138578, 
-        date: "02-05-2000"
-      }, code:483532,
-      role: null,
+        name:"default",
+        isGeneralStatisticAvailable:true,
+        isProcessCreatorAvailable:true,
+        isJiraAvailable:true,
+        isAddingStaffAvailable:true,
+        companyToken:"",
+        id: ""
+      }
     },
   ];
 
   Departments: DepartmentsData[] = [
-    {
-      id:
-      {
-        timestamp: 616516, 
-        date: "02-05-2000"
-      }, 
-      name: "PavelDepaf", 
-      users: this.Users,
-      companyToken: "6280ad6a8647ee27a6a8e37f"},
+  //   {
+  //     id:
+  //     {
+  //       timestamp: 616516, 
+  //       date: "02-05-2000"
+  //     }, 
+  //     name: "PavelDepaf", 
+  //     users: this.Users,
+  //     companyToken: "6280ad6a8647ee27a6a8e37f"},
     
-    {id:{timestamp: 616516, date: "02-05-2000"}, name: "PavelDep", 
-    users: this.Users, companyToken: "6280ad6a8647ee27a6a8e37f"},
+  //   {id:{timestamp: 616516, date: "02-05-2000"}, name: "PavelDep", 
+  //   users: this.Users, companyToken: "6280ad6a8647ee27a6a8e37f"},
 
-    {id:{timestamp: 616516, date: "02-05-2000"}, name: "sdadsads", 
-    users: this.Users, companyToken: "6280ad6a8647ee27a6a8e37f"}
+  //   {id:{timestamp: 616516, date: "02-05-2000"}, name: "sdadsads", 
+  //   users: this.Users, companyToken: "6280ad6a8647ee27a6a8e37f"}
   ];
 
   toggleDepartment(ind){
@@ -105,8 +107,16 @@ export class DashboardComponent implements OnInit {
     // document.getElementById("iconDrodown" + ind).classList.toggle("cil-chevron-bottom");
   }
 
-  ngOnInit(): void {
 
+  returnedUser: any[];
+  addUserDeparts(name,users){
+    this.returnedUser =  [users];
+    console.log(name, users);
+    this.DashboardService.addUserToDepartment(name,this.returnedUser,this.companyToken).subscribe();
+    
+  }
+
+  ngOnInit(): void {
     this.companyToken = localStorage.getItem('companyToken');
     this.DashboardService.getAllDeparts(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 

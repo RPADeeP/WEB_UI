@@ -1,10 +1,4 @@
-export class DepartmentsData {
-    id: string;
-    name: string;
-    users: user[];
-    companyToken: string;
-}
-export class user {
+export class UserData {
     firstName: string;
 	lastName: string;
 	middleName: string;
