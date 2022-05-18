@@ -1,0 +1,48 @@
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card mx-4" id="registerForm"
+            *ngFor="let item of counter">
+                <div class="card-body p-4">
+                    <label>Step {{ item }}</label>
+                    <br>
+                    <select>
+                        <option name="departament">
+                            "HR"
+                        </option>
+                    </select>
+                    <br>
+                    <select [(ngModel)]="userContractor" name="userContractor">
+                        <option>
+                            6283e95812bf2011990a6bc6
+                        </option>
+                    </select>
+                    <br>
+                    <input [(ngModel)]="descriptionField" name="descriptionField" type="text" class="form-control" placeholder="Description" required>
+                    <br>
+                    <input [(ngModel)]="decimalFields" name="decimalFields" type="text" class="form-control" placeholder="decimalFields" required>
+                    <br>
+                    <input [(ngModel)]="stringFields" name="stringFields" type="text" class="form-control" placeholder="stringFields" required>
+                    <br>
+                    <input [(ngModel)]="dateField" name="dateField" type="text" class="form-control" placeholder="dateField" required>
+                    <br>
+                    <input [(ngModel)]="dropDownChoiceField" name="dropDownChoiceField" type="text" class="form-control" placeholder="dropDownChoiceField" required>
+                    <br>
+                    <input [(ngModel)]="status" name="status" type="text" class="form-control" placeholder="status" required>
+                    <br>
+                    <button (click)="onSave()">SAVE</button>
+                </div>
+            </div>
+            
+        </div>
+      </div>
+     </div>
+    </main>
+</div>
+<main class="main d-flex align-items-center">
+    <div class="container">
+<button (click)="onSumbit()">SUMBIT</button>
+</div>
+</main>
