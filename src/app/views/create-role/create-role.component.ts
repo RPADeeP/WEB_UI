@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CreateRoleService} from './create-role.service';
 import { createdRoleData} from './create-role.model';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AnyForUntypedForms, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-role',
@@ -18,33 +18,30 @@ export class CreateRoleComponent implements OnInit {
   isProcessCreatorAvailable: createdRoleData;
   isJiraAvailable: createdRoleData;
   isAddingStaffAvailable: createdRoleData;
-  companyToken: createdRoleData;
+  companyToken: string;
 
-  
-
-  Role: createdRoleData[] = [
-    {roleName: 'HR', isGeneralStatisticAvailable: true, isProcessCreatorAvailable: true, isJiraAvailable: false, isAddingStaffAvailable: true, companyToken: 's6d5f4'},
-    {roleName: 'Marketing', isGeneralStatisticAvailable: true, isProcessCreatorAvailable: true, isJiraAvailable: true, isAddingStaffAvailable: true, companyToken: '4t9rj84'},
-    {roleName: 'Developing', isGeneralStatisticAvailable: true, isProcessCreatorAvailable: true, isJiraAvailable: true, isAddingStaffAvailable: false, companyToken: '0x6cv51b'},
-    {roleName: 'Assembly', isGeneralStatisticAvailable: true, isProcessCreatorAvailable: true, isJiraAvailable: true, isAddingStaffAvailable: false, companyToken: '9a08f4e'}
-  ];
-
-  // Role: any = ['HR', 'Marketing', 'Developing', 'Assembly'];
-  // Role: any;
+  Role: createdRoleData[];
   
   returnedData: any;
   ngOnInit(): void {
-    // console.log(localStorage.getItem('companyToken'))
-    // // this.companyToken = localStorage.getItem('companyToken');
-    // console.log(this.createDepartmentService.getRoleDeparts(JSON.stringify(localStorage.getItem('companyToken'))));
-    // this.createDepartmentService.getRoleDeparts(JSON.stringify(localStorage.getItem('companyToken'))).subscribe(); //
-    // console.log(this.returnedData)
-    // this.Role = this.returnedData;
+    this.companyToken = localStorage.getItem('companyToken');
+    this.CreateRoleService.getRoleDeparts(localStorage.getItem('companyToken')).subscribe(
+      (data: any) => { 
+        this.Role=data; 
+        console.log(this.Role);
+      }
+    );
   }
 
-  toggleDropdownArrowClass() {
+  toggleExistingRolesDropdown() {
     document.getElementById("iconDrodown").classList.toggle("cil-chevron-top");
     document.getElementById("iconDrodown").classList.toggle("cil-chevron-bottom");
+    document.getElementById("existingRoles").classList.toggle("hide");
+  }
+  toggleRoleDropdown(ind) {
+    document.getElementById(ind).classList.toggle("hide");
+    document.getElementById("iconDrodown" + ind).classList.toggle("cil-chevron-top");
+    document.getElementById("iconDrodown" + ind).classList.toggle("cil-chevron-bottom");
   }
 
   createRole(){

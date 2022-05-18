@@ -1,6 +1,6 @@
 <div class="app-body">
   <main class="main d-flex align-items-center">
-    <div class="container ">
+    <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
           <div class="card mx-4">
@@ -14,76 +14,9 @@
                   </div>
                   <input [(ngModel)]="departmentName" name="departmentName" type="text" class="form-control" placeholder="Department name" autocomplete="departmentName" required>
                 </div>
-                <div class="dropdown text-center">
-                  <select [(ngModel)]="choosenRole" name="roleName" type="text" class="btn btn-outline-primary dropdown-toggle mb-3" autocomplete="roleName" required>
-                    <option *ngFor="let role of Role" [ngValue]="role">
-                      {{ role.roleName }}
-                    </option>
-                  </select>
-                </div>
                 <button (click)="createDep()" type="button" class="btn btn-block btn-success">Create</button>
               </form>
             </div>
-
-            <!-- <div>
-              <div class="btn-group float-right" dropdown>
-                <button type="button" class="btn btn-transparent p-0" dropdownToggle (click)="toggleDropdownArrowClass()">
-                  <i id="iconDrodown" class="cil-chevron-top"></i>
-                </button>
-                
-                <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-                  <a class="dropdown-item" href="#">Update</a>
-                  <a class="dropdown-item" href="#">Delete</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </div>
-            </div> -->
-            <div class="card-body p-4">
-              <form>
-                <h1 class="text-center">Create role</h1>
-                <p class="text-center">Create new role</p>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-user"></i></span>
-                  </div>
-                  <input [(ngModel)]="roleName" name="roleName" type="text" class="form-control" placeholder="Role name" autocomplete="roleName" required>
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend align-items-center">
-                    <label>Is General Statistic Available:</label>
-                  </div>
-                  <input type="checkbox" [(ngModel)]="isGeneralStatisticAvailable" name="isGeneralStatisticAvailable" class="form-control" autocomplete="isGeneralStatisticAvailable" required/>
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend align-items-center">
-                    <label>Is Process Creator Available:</label>
-                  </div>
-                  <input type="checkbox" [(ngModel)]="isProcessCreatorAvailable" name="isProcessCreatorAvailable" class="form-control" autocomplete="isProcessCreatorAvailable" required/>
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend align-items-center">
-                    <label>Is Jira Available:</label>
-                  </div>
-                  <input type="checkbox" [(ngModel)]="isJiraAvailable" name="isJiraAvailable" class="form-control" autocomplete="isJiraAvailable" required/>
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend align-items-center  ">
-                    <label>Is Adding Staff Available:</label>
-                  </div>
-                  <input type="checkbox" [(ngModel)]="isAddingStaffAvailable" name="isAddingStaffAvailable" class="form-control" autocomplete="isAddingStaffAvailable" required/>
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="icon-user"></i></span>
-                  </div>
-                  <input [(ngModel)]="companyToken" name="companyToken" type="text" class="form-control" placeholder="Company token" autocomplete="companyToken" required>
-                </div>
-
-                <button (click)="createRole()" type="button" class="btn btn-block btn-success">Create</button>
-              </form>
-            </div >
-
             <div class="card-body text-center">
               <a class="" [routerLink]="['/dashboard']"><i class="fa fa-long-arrow-left"></i> Back to main page</a>
             </div>

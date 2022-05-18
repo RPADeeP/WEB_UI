@@ -2,11 +2,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class DepartmentsService {
+export class DashboardService {
 
     constructor(private http: HttpClient){}
 
     departUrl = 'http://26.237.245.64:8081/';
+    usersUrl = 'http://26.237.245.64:8080/';
 
     jwt = localStorage.getItem('jwtToken')
     
@@ -23,23 +24,15 @@ export class DepartmentsService {
         return this.http.get(this.departUrl + 'department/get-all/'+  token, this.httpOptions)
     }
 
-    // createDep(departmentName, choosenRole) {
-    //     console.log({departmentName, choosenRole});
-    //     return this.http.post(this.createDepUrl,
-    //         {
-    //             departmentName,
-    //             choosenRole
-    //         }
-    //     );
-    // }
+    getCurrentUser(){
+        return this.http.get(this.usersUrl + 'user/get-current-user/', this.httpOptions)
+    }
 
-    // createRoleUrl = 'http://26.237.245.64:8080/auth/create_department';
-    // createRole(roleName) {
-    //     console.log({roleName});
-    //     return this.http.post(this.createRoleUrl,
-    //         {
-    //             roleName
-    //         }
-    //     );
-    // }
+    getAllUsers(token){
+        return this.http.get(this.usersUrl + 'user/get-all/'+  token, this.httpOptions)
+    }
+
+    getOneUser(){
+
+    }
 }

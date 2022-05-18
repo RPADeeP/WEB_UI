@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +28,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { CreateDepartmentComponent } from './views/create-department/create-department.component';
 import { DepartmentsComponent } from './views/departments/departments.component';
 import { CreateRoleComponent } from './views/create-role/create-role.component';
+import { UsersComponent } from './views/users/users.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -50,9 +52,11 @@ import { ChartsModule } from 'ng2-charts';
 import { BPMComponent } from './views/bpm/bpm.component';
 
 
+
 @NgModule({
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -81,6 +85,8 @@ import { BPMComponent } from './views/bpm/bpm.component';
     DepartmentsComponent,
     CreateRoleComponent,
     BPMComponent,
+    UsersComponent,
+    
   ],
   providers: [
     LoginService,

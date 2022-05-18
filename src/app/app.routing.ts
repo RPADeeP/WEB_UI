@@ -12,6 +12,7 @@ import { CreateDepartmentComponent } from './views/create-department/create-depa
 import { DepartmentsComponent } from './views/departments/departments.component';
 import { CreateRoleComponent } from './views/create-role/create-role.component';
 import { BPMComponent } from './views/bpm/bpm.component';
+import { UsersComponent } from './views/users/users.component';
 
 export const routes: Routes = [
   {
@@ -73,6 +74,13 @@ export const routes: Routes = [
     component: BPMComponent,
     data: {
       title: 'BPM'
+    }
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    data: {
+      title: 'Users Page'
     }
   },
   {

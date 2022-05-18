@@ -12,15 +12,21 @@ export class DepartmentsComponent implements OnInit {
 
   constructor(private http: HttpClient, private DepartmentsService: DepartmentsService) { }
 
-  Departments: DepartmentsData[] = [
-    {id: 0, depatmentName: 'HR', choosenRole: 'Hr', numberOfWorkers: 25, workersOnline: 15},
-    {id: 1, depatmentName: 'Marketing', choosenRole: 'Marketing', numberOfWorkers: 30, workersOnline: 26},
-    {id: 2, depatmentName: 'Developing', choosenRole: 'Developing', numberOfWorkers: 16, workersOnline: 16},
-    {id: 3, depatmentName: 'Assembly', choosenRole: 'Assembly', numberOfWorkers: 50, workersOnline: 49}
-  ];
+  companyToken: string;
+
+  Departments: DepartmentsData[];
+  
 
   returnedData: any;
+
   ngOnInit(): void {
+    this.companyToken = localStorage.getItem('companyToken');
+    this.DepartmentsService.getAllDeparts(localStorage.getItem('companyToken')).subscribe(
+      (data: any) => { 
+        this.Departments=data; 
+        console.log(this.Departments);
+      }
+    )
     // console.log(typeof(this.DepartmentsService.getAllDeparts(JSON.parse(localStorage.getItem('companyToken')))));
     // this.returnedData = this.DepartmentsService.getAllDeparts(JSON.parse(localStorage.getItem('companyToken')));
     // this.Role = this.returnedData;

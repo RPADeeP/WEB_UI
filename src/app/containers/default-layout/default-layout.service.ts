@@ -2,11 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class CreateDepartmentService {
-
-    createDepUrl = 'http://26.237.245.64:8081/department/create';
+export class DefaultLayoutService {
 
     constructor(private http: HttpClient){}
+
+    usersUrl = 'http://26.237.245.64:8080/';
 
     jwt = localStorage.getItem('jwtToken')
     
@@ -19,14 +19,7 @@ export class CreateDepartmentService {
         )
     };
 
-    createDep(name, companyToken) {
-        console.log({name, companyToken});
-        return this.http.post(this.createDepUrl,
-            {
-                name,
-                companyToken
-            },
-            this.httpOptions
-        );
+    getCurrentUser(){
+        return this.http.get(this.usersUrl + 'user/get-current-user/', this.httpOptions)
     }
 }
