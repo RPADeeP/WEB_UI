@@ -72,21 +72,17 @@ export class DashboardComponent implements OnInit {
   ];
 
   Departments: DepartmentsData[] = [
-  //   {
-  //     id:
-  //     {
-  //       timestamp: 616516, 
-  //       date: "02-05-2000"
-  //     }, 
-  //     name: "PavelDepaf", 
-  //     users: this.Users,
-  //     companyToken: "6280ad6a8647ee27a6a8e37f"},
+    {
+      id: "86af7sd2fas41d1f64a",
+      name: "PavelDepaf", 
+      users: this.Users,
+      companyToken: "6280ad6a8647ee27a6a8e37f"},
     
-  //   {id:{timestamp: 616516, date: "02-05-2000"}, name: "PavelDep", 
-  //   users: this.Users, companyToken: "6280ad6a8647ee27a6a8e37f"},
+    {id:"9a82dsf4a6d817f1a6d4", name: "PavelDep", 
+    users: this.Users, companyToken: "6280ad6a8647ee27a6a8e37f"},
 
-  //   {id:{timestamp: 616516, date: "02-05-2000"}, name: "sdadsads", 
-  //   users: this.Users, companyToken: "6280ad6a8647ee27a6a8e37f"}
+    {id:"9a82dsf4a6d817f1a6d4", name: "sdadsads", 
+    users: this.Users, companyToken: "6280ad6a8647ee27a6a8e37f"}
   ];
 
   toggleDepartment(ind){

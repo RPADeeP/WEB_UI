@@ -3,7 +3,7 @@
     
     <div attr.id="length{{department.name}}" *ngFor="let department of Departments" class="col-sm-6 col-lg-3" style="min-height: 50%;">
     
-      <div attr.id="departElem{{department.name}}" class="card text-white bg-info" style="border: 2px solid orange;">
+      <div attr.id="departElem{{department.name}}" class="card text-white bg-info">
         <div class="card-body pb-4">
           <div class="btn-group float-right" dropdown>
             <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
@@ -25,8 +25,8 @@
       </div>
     
     <div attr.id="userElem{{department.name}}" class="hide">
-      <div class="card" style="width: 35%;">
-        <button type="button" class="btn-group btn" (click)="toggleDepartment(department.name)" style="width:100%">
+      <div class="card" style="width: 60%;">
+        <button type="button" class="btn btn-primary" (click)="toggleDepartment(department.name)" style="width:100%">
           GO back
         </button>
         <div class="card-body pb-4">
@@ -37,25 +37,35 @@
         </div>
 
         <div style="border-top: 2px solid black;">
-          <table style="width:100%;">
+          <table class="table table-bordered table-striped table-sm" style="width:100%;">
+            <thead>
             <tr>
               <th>firstName</th>
               <th>lastName</th>
               <th>middleName</th>
+              <th>code</th>
               <th>roleName</th>
             </tr>
+          </thead>
+          <tbody>
             <tr *ngFor="let user of department.users" class="card-body pb-4">
               <td>{{ user.firstName }}</td>
               <td>{{ user.lastName }}</td>
               <td>{{ user.middleName }}</td>
-              <td *ngIf="user.role">{{ user.role.name }}</td>
+              <td>{{ user.code }}</td>
+              <td *ngIf="!(user.role.name === 'default') else defalt"><span class="badge badge-success">{{ user.role.name }}</span></td>
+              <ng-template #defalt> 
+                <td><span class="badge badge-warning">Default!</span></td>
+              </ng-template>
             </tr>
+          </tbody>
           </table>
         </div>
       </div>
       
       <div id="allUsers" class="card float-right p-3" style="width: 100%;">
-        <table style="width:100%">
+        <table class="table table-bordered table-striped table-sm" style="width:100%">
+          <thead>
           <tr>
             <th>firstName</th>
             <th>lastName</th>
@@ -63,14 +73,20 @@
             <th>code</th>
             <th>roleName</th>
           </tr>
+        </thead>
+        <tbody>
           <tr *ngFor="let user of Users" class="card-body pb-4">
             <td>{{ user.firstName }}</td>
             <td>{{ user.lastName }}</td>
             <td>{{ user.middleName }}</td>
             <td>{{ user.code }}</td>
-            <td *ngIf="user.role">{{ user.role.name }}</td>
+            <td *ngIf="!(user.role.name === 'default') else defalt"><span class="badge badge-success">{{ user.role.name }}</span></td>
+              <ng-template #defalt> 
+                <td><span class="badge badge-warning">Default!</span></td>
+              </ng-template>
             <td><button class="btn" (click)="addUserDeparts(department.name, user)"><i class="icon-plus"></i></button></td>
           </tr>
+        </tbody>
         </table>
       </div>
     </div>

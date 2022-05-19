@@ -29,11 +29,11 @@ export class Serv {
     }
 
     public getAllUsers(token){
-      return this.http.get(this.usersUrl + 'user/get-all/'+  token)
+      return this.http.get(this.usersUrl + 'user/get-all/'+  token, this.httpOptions)
   }
 
   public getAllDeparts(token){
-    return this.http.get(this.departUrl + 'department/get-all/'+  token)
+    return this.http.get(this.departUrl + 'department/get-all/'+  token, this.httpOptions)
 }
 
 public addUserDeparts(name,id,firstName,middleName,lastName,companyToken){
@@ -52,7 +52,7 @@ public addUserDeparts(name,id,firstName,middleName,lastName,companyToken){
 }
 
 public getRoleDeparts(token){
-  return this.http.get(this.departUrl + 'role/get-all/'+  token)
+  return this.http.get(this.usersUrl + 'role/get-all/'+  token, this.httpOptions)
 }
 
 public createAction(name: String, description: String, steps: Steps[],status, companyToken){

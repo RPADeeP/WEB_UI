@@ -14,6 +14,7 @@ import { CreateRoleComponent } from './views/create-role/create-role.component';
 import { BPMComponent } from './views/bpm/bpm.component';
 import { UsersComponent } from './views/users/users.component';
 import { TaskerComponent } from './views/tasker/tasker.component';
+import { ActionsComponent } from './views/actions/actions.component';
 
 export const routes: Routes = [
   {
@@ -89,6 +90,13 @@ export const routes: Routes = [
     component: UsersComponent,
     data: {
       title: 'Users Page'
+    }
+  },
+  {
+    path: 'actions',
+    component: ActionsComponent,
+    data: {
+      title: 'Actions Page'
     }
   },
   {

@@ -29,6 +29,7 @@ import { CreateDepartmentComponent } from './views/create-department/create-depa
 import { DepartmentsComponent } from './views/departments/departments.component';
 import { CreateRoleComponent } from './views/create-role/create-role.component';
 import { UsersComponent } from './views/users/users.component';
+import { ActionsComponent } from './views/actions/actions.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -51,6 +52,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { BPMComponent } from './views/bpm/bpm.component';
 import { TaskerComponent } from './views/tasker/tasker.component';
+
 
 
 
@@ -88,6 +90,7 @@ import { TaskerComponent } from './views/tasker/tasker.component';
     BPMComponent,
     UsersComponent,
     TaskerComponent,
+    ActionsComponent,
     
   ],
   providers: [
