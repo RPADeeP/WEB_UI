@@ -30,6 +30,11 @@ export const navItems: INavData[] = [
         url: '/create-role',
         icon: 'icon-star'
       },
+      {
+        name: 'Actions',
+        url: '/actions',
+        icon: 'icon-star'
+      },
     ]
   },
 

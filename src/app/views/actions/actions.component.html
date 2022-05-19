@@ -1,11 +1,18 @@
 <div class="app-body ">
-    <main class="main d-flex align-items-center" id="shadow">
+    <main class="main d-flex align-items-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="card mx-4 mt-4">
+                <div *ngFor="let action of Actions" class="">
+                    <div  class="card mx-4 mt-4">
                         <div id="allUsers" class="card-body pb-4" style="width: 100%;">
-                            <table class="table table-bordered table-striped table-sm" style="width:100%">
+                            <div>
+                                <div>
+                                    <div class="text-value">{{action.name}}</div>
+                                    <div>Description: {{ action.description }}</div>
+                                    <div>Number of steps: {{ action.steps.length }}</div>
+                                </div>
+                            </div>
+                            <!-- <table class="table table-bordered table-striped table-sm" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>firstName</th>
@@ -31,7 +38,7 @@
                                     </td>
                                 </tr>
                             </tbody>
-                            </table>
+                            </table> -->
                         </div>
                         <div class="card-body p-4 text-center">
                             <a class="" [routerLink]="['/dashboard']"><i class="fa fa-long-arrow-left"></i>Back to main page</a>
@@ -41,7 +48,7 @@
             </div>
         </div>
     </main>
-    <div class="card mx-4 hide" id="changeRole">
+    <!-- <div class="card mx-4 hide" id="changeRole">
         <div class="card-body p-4">
             <form>
                 <h1>Change role</h1>
@@ -56,5 +63,5 @@
                 <button (click)="addRoleToUser()" type="button" class="btn btn-block btn-primary">Change role</button>
           </form>
         </div>
-    </div>
+    </div> -->
 </div>

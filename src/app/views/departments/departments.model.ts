@@ -1,4 +1,4 @@
-export class DepartmentsData {
+export class DepartmentsDataasdasd {
     id: number;
     name: string;
     

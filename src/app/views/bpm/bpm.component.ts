@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Serv } from '../services.service';
 import { Steps } from './bpm.model'
+import { DepartmentsData } from '../dashboard/dashboard.model';
+
 @Component({
   selector: 'app-bpm',
   templateUrl: './bpm.component.html',
@@ -33,10 +35,23 @@ export class BPMComponent implements OnInit {
   dropDownChoiceFieldValues;
   statusValues;
 
+
+  Departments: DepartmentsData[];
   ngOnInit(): void {
     this.counter.push(0)
+    this.serv.getAllDeparts(localStorage.getItem('companyToken')).subscribe(
+      (data: any) => { 
+        this.Departments=data; 
+        console.log(this.Departments);
+      }
+    )
+    
   }
-
+  choosenDapartment: DepartmentsData;
+  
+  log(){
+    console.log(this.choosenDapartment)
+  }
 
   onSumbit(){
     console.log(this.steps);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DepartmentsService } from './departments.service';
-import { DepartmentsData } from './departments.model';
+import { DepartmentsDataasdasd } from './departments.model';
 
 @Component({
   selector: 'app-departments',
@@ -14,7 +14,7 @@ export class DepartmentsComponent implements OnInit {
 
   companyToken: string;
 
-  Departments: DepartmentsData[];
+  Departments: DepartmentsDataasdasd[];
   
 
   returnedData: any;
