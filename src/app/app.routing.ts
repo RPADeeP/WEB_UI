@@ -13,6 +13,7 @@ import { DepartmentsComponent } from './views/departments/departments.component'
 import { CreateRoleComponent } from './views/create-role/create-role.component';
 import { BPMComponent } from './views/bpm/bpm.component';
 import { UsersComponent } from './views/users/users.component';
+import { TaskerComponent } from './views/tasker/tasker.component';
 import { ActionsComponent } from './views/actions/actions.component';
 
 export const routes: Routes = [
@@ -75,6 +76,13 @@ export const routes: Routes = [
     component: BPMComponent,
     data: {
       title: 'BPM'
+    }
+  },
+  {
+    path: 'tasker',
+    component: TaskerComponent,
+    data: {
+      title: 'Tasker'
     }
   },
   {

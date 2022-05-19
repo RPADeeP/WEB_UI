@@ -9,7 +9,7 @@ export class Serv {
     usersUrl = 'http://26.237.245.64:8080/';
     departUrl = 'http://26.237.245.64:8081/';
     processUrl = 'http://26.237.245.64:8082/';
-
+    taskerUrl = 'http://26.237.245.64:8083/';
     jwt = localStorage.getItem('jwtToken')    
     httpOptions = {
         headers: new HttpHeaders().set('Authorization',  'Bearer ' + this.jwt)
@@ -72,6 +72,10 @@ public deleteItem(steps, key){
   if (index > -1) {
      steps.splice(index, 1);
   }
+}
+
+public getTasks(companyToken){
+  return this.http.get(this.taskerUrl+ 'task/get-all/' +  companyToken,  this.httpOptions)
 }
 
 }
