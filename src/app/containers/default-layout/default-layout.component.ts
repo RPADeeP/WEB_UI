@@ -16,13 +16,13 @@ export class DefaultLayoutComponent {
   User: user;
   ngOnInit(): void {
 
-    this.companyToken = localStorage.getItem('companyToken');
+   /* this.companyToken = localStorage.getItem('companyToken');
     this.DefaultLayoutService.getCurrentUser().subscribe(
       (data: any) => {
         this.User = data;
         console.log(this.User);
       }
-    )
+    )*/
   }
 
   public sidebarMinimized = false;
