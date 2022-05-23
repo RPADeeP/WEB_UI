@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { ErrorHandler, Injectable } from '@angular/core';
+import { catchError } from 'rxjs/operators';
 import { createdRoleData } from './create-role.model';
 
 @Injectable({ providedIn: 'root' })
@@ -9,7 +10,6 @@ export class CreateRoleService {
 
 
     jwt = localStorage.getItem('jwtToken')
-    
     httpOptions = {
         headers: new HttpHeaders(
             { 
@@ -18,24 +18,14 @@ export class CreateRoleService {
             }
         )
     };
-    
-    getRoleDeparts(token){
+    getAllRoles(token){
         return this.http.get('http://26.237.245.64:8080/role/get-all/' +  token,  this.httpOptions)
     }
 
+    response: any;
     createRoleUrl = 'http://26.237.245.64:8080/role/create';
-    createRole(name, 
-        isGeneralStatisticAvailable, 
-        isProcessCreatorAvailable, 
-        isJiraAvailable, 
-        isAddingStaffAvailable,
-        companyToken) {
-        console.log({name,
-            isGeneralStatisticAvailable, 
-            isProcessCreatorAvailable, 
-            isJiraAvailable, 
-            isAddingStaffAvailable,
-            companyToken});
+    createRole(name, isGeneralStatisticAvailable, isProcessCreatorAvailable, 
+        isJiraAvailable, isAddingStaffAvailable, companyToken) {
         return this.http.post(this.createRoleUrl,
             {
                 name,
@@ -46,6 +36,6 @@ export class CreateRoleService {
                 companyToken
             },
             this.httpOptions
-        );
+        )
     }
 }

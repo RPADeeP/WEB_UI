@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
@@ -28,7 +28,6 @@ import { RegisterComponent } from './views/register/register.component';
 import { CreateDepartmentComponent } from './views/create-department/create-department.component';
 import { DepartmentsComponent } from './views/departments/departments.component';
 import { CreateRoleComponent } from './views/create-role/create-role.component';
-import { UsersComponent } from './views/users/users.component';
 import { ActionsComponent } from './views/actions/actions.component';
 
 const APP_CONTAINERS = [
@@ -50,10 +49,12 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+
+
 import { BPMComponent } from './views/bpm/bpm.component';
 import { TaskerComponent } from './views/tasker/tasker.component';
 
-
+import { Interceptor } from './interceptor';
 
 
 @NgModule({
@@ -88,7 +89,6 @@ import { TaskerComponent } from './views/tasker/tasker.component';
     DepartmentsComponent,
     CreateRoleComponent,
     BPMComponent,
-    UsersComponent,
     TaskerComponent,
     ActionsComponent,
     
@@ -100,6 +100,10 @@ import { TaskerComponent } from './views/tasker/tasker.component';
       useClass: HashLocationStrategy
     },
     IconSetService,
+    { provide: HTTP_INTERCEPTORS, 
+      useClass: Interceptor, 
+      multi: true 
+    },
   ],
   bootstrap: [ AppComponent ]
 })

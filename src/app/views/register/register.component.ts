@@ -39,16 +39,14 @@ export class RegisterComponent implements OnInit {
 
   register() {
     console.log(this.firstName, this.middleName, this.lastName, this.password, this.companyToken, this.companyName)
-    this.registerService.register(this.firstName, this.middleName, this.lastName, this.password, this.companyToken, this.companyName).subscribe(
+    this.registerService.register(this.firstName, this.middleName, this.lastName, this.password, this.companyToken, 
+      this.companyName).subscribe(
       (data: any) => { 
         this.returnedData=data; 
         if (this.returnedData) {
           localStorage.setItem('companyToken', this.returnedData.companyToken); 
           localStorage.setItem('jwtToken', this.returnedData.jwtToken);
           this.router.navigate(['/dashboard']);
-        }
-        else {
-          console.error('ERROR');
         }
       }
     );

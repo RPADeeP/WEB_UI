@@ -86,13 +86,6 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'users',
-    component: UsersComponent,
-    data: {
-      title: 'Users Page'
-    }
-  },
-  {
     path: 'actions',
     component: ActionsComponent,
     data: {
@@ -115,6 +108,10 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./views/users/users.module').then(m => m.UsersModule)
       },
     ]
   },

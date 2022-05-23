@@ -6,10 +6,7 @@ export class UsersService {
 
     constructor(private http: HttpClient){}
 
-    usersUrl = 'http://26.237.245.64:8080/';
-
     jwt = localStorage.getItem('jwtToken')
-    
     httpOptions = {
         headers: new HttpHeaders(
             { 
@@ -18,7 +15,7 @@ export class UsersService {
             }
         )
     };
-
+    usersUrl = 'http://26.237.245.64:8080/';
     getAllUsers(token){
         return this.http.get(this.usersUrl + 'user/get-all/'+  token, this.httpOptions)
     }

@@ -16,7 +16,7 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </div>
-          <div (click)="toggleDepartment(department.name)" style="border: 2px solid black;">
+          <div (click)="toggleDepartment(department.name)" >
             <div class="text-value">{{department.name}}</div>
             <div>Company token: {{ department.companyToken }}</div>
             <div>Number of workers: {{ department.users.length }}</div>
@@ -43,8 +43,9 @@
               <th>firstName</th>
               <th>lastName</th>
               <th>middleName</th>
-              <th>code</th>
+              <th>UserName</th>
               <th>roleName</th>
+              <th>Delite</th>
             </tr>
           </thead>
           <tbody>
@@ -57,6 +58,7 @@
               <ng-template #defalt> 
                 <td><span class="badge badge-warning">Default!</span></td>
               </ng-template>
+              <td><button class="btn" (click)="deleteUserFromDepartment(user.id)"><i class="icon-minus"></i></button></td>
             </tr>
           </tbody>
           </table>
@@ -70,7 +72,7 @@
             <th>firstName</th>
             <th>lastName</th>
             <th>middleName</th>
-            <th>code</th>
+            <th>UserName</th>
             <th>roleName</th>
           </tr>
         </thead>
@@ -84,7 +86,7 @@
               <ng-template #defalt> 
                 <td><span class="badge badge-warning">Default!</span></td>
               </ng-template>
-            <td><button class="btn" (click)="addUserDeparts(department.name, user)"><i class="icon-plus"></i></button></td>
+            <td><button class="btn" (click)="addUserDeparts(department.name, user.id, department.id)"><i class="icon-plus"></i></button></td>
           </tr>
         </tbody>
         </table>

@@ -8,7 +8,7 @@ import { Task } from './tasker.model'
 })
 export class TaskerComponent implements OnInit {
 
-  constructor(private serv: Serv) { }
+  constructor(private serv: Serv) {  }
   tasks: Task;
   ngOnInit(): void {
     this.serv.getTasks(localStorage.getItem('companyToken')).subscribe(

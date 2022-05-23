@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartmentsData, user } from './dashboard.model';
 import { HttpClient } from '@angular/common/http';
+import {Router} from '@angular/router';
 import { DashboardService } from './dashboard.service'
+import { DefaultLayoutComponent } from 'src/app/containers';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,9 +12,10 @@ import { DashboardService } from './dashboard.service'
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private http: HttpClient, private DashboardService: DashboardService){}
+  constructor(private http: HttpClient, private DashboardService: DashboardService, private router:Router, private def: DefaultLayoutComponent){}
 
   companyToken: string;
+  jwtToken: string;
 
   Users: user[] = [
     {
@@ -86,17 +89,26 @@ export class DashboardComponent implements OnInit {
   ];
 
   toggleDepartment(ind){
+
+    if(this.def.User.role.isProcessCreatorAvailable){
+      console.log('Yes')
+      for (let index = 0; index < this.Departments.length; index++) {
+        document.getElementById("departElem" + this.Departments[index].name).classList.toggle("hide");
+      }
+      //show inform about choosen depatment
+      document.getElementById("userElem" + ind).classList.toggle("inblock");
+      //change department width
+      for (let index = 0; index < this.Departments.length; index++) {
+        document.getElementById("length"+ this.Departments[index].name).classList.toggle("col-lg-3");
+        document.getElementById("length"+ this.Departments[index].name).classList.toggle("col-lg-12");
+      }
+    }
+    else{
+      alert('You dont have permission')
+    }
+
     //hide all depatment blocks
-    for (let index = 0; index < this.Departments.length; index++) {
-      document.getElementById("departElem" + this.Departments[index].name).classList.toggle("hide");
-    }
-    //show inform about choosen depatment
-    document.getElementById("userElem" + ind).classList.toggle("inblock");
-    //change department width
-    for (let index = 0; index < this.Departments.length; index++) {
-      document.getElementById("length"+ this.Departments[index].name).classList.toggle("col-lg-3");
-      document.getElementById("length"+ this.Departments[index].name).classList.toggle("col-lg-12");
-    }
+    
     
     // document.getElementById("departElem" + ind).classList.toggle("hide");
     // document.getElementById("iconDrodown" + ind).classList.toggle("cil-chevron-top");
@@ -104,23 +116,34 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  returnedUser: any[];
-  addUserDeparts(name,users){
-    this.returnedUser =  [users];
-    console.log(name, users);
-    this.DashboardService.addUserToDepartment(name,this.returnedUser,this.companyToken).subscribe();
+  returnedUser: user;
+  addUserDeparts(name,usersId, departmentId){
+    // this.returnedUser =  users;
+    console.log(name, usersId, departmentId);
+    this.DashboardService.addUserToDepartment(name,usersId, departmentId).subscribe();
     
+  }
+  deleteUserFromDepartment(usersId){
+    this.DashboardService.deleteUserFromDepartment(usersId).subscribe();
   }
 
   ngOnInit(): void {
     this.companyToken = localStorage.getItem('companyToken');
+    this.jwtToken = localStorage.getItem('jwtToken')
+
+    if(!this.companyToken && !this.jwtToken){
+      this.router.navigate(['/login']);
+    }
+
+
+
     this.DashboardService.getAllDeparts(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Departments=data; 
         console.log(this.Departments);
       }
     )
-    this.DashboardService.getAllUsers(localStorage.getItem('companyToken')).subscribe(
+    this.DashboardService.getAllUsersWithoutDepart(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Users=data; 
         console.log(this.Users);

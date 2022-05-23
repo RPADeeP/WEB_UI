@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { CreateRoleService} from './create-role.service';
 import { createdRoleData} from './create-role.model';
 import { AnyForUntypedForms, FormBuilder, Validators } from '@angular/forms';
+import { Serv } from '../services.service';
+
 
 @Component({
   selector: 'app-create-role',
@@ -11,7 +13,7 @@ import { AnyForUntypedForms, FormBuilder, Validators } from '@angular/forms';
 })
 export class CreateRoleComponent implements OnInit {
 
-  constructor(private http: HttpClient, private CreateRoleService: CreateRoleService, public fb: FormBuilder) { }
+  constructor(private http: HttpClient, private CreateRoleService: CreateRoleService, private serv: Serv) { }
 
   roleName: createdRoleData;
   isGeneralStatisticAvailable: createdRoleData;
@@ -25,7 +27,7 @@ export class CreateRoleComponent implements OnInit {
   returnedData: any;
   ngOnInit(): void {
     this.companyToken = localStorage.getItem('companyToken');
-    this.CreateRoleService.getRoleDeparts(localStorage.getItem('companyToken')).subscribe(
+    this.CreateRoleService.getAllRoles(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Role=data; 
         console.log(this.Role);
@@ -62,7 +64,16 @@ export class CreateRoleComponent implements OnInit {
         this.isJiraAvailable, 
         this.isAddingStaffAvailable,
         this.companyToken
-      ).subscribe();
+      ).subscribe(
+        () => {
+          window.location.reload();
+        },
+        error => {
+          if(error.status == 401){
+            this.serv.logout();
+          }
+        }
+      );
   }
 
 }

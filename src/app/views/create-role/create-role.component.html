@@ -14,20 +14,39 @@
                                 {{ role.name }} <i attr.id="iconDrodown{{role.name}}" class="cil-chevron-top"></i>
                             </button>
                             <div attr.id="{{role.name}}" class="hide"> 
-                                
-                                <table style="width:100%">
+                                <table class="table table-bordered table-striped table-sm" style="width:100%">
+                                  <thead>
                                     <tr>
                                       <th>General Statistic Available</th>
                                       <th>Process Creator Available</th>
                                       <th>Jira Available</th>
                                       <th>Adding Staff Available</th>
                                     </tr>
+                                  </thead>
+                                  <tbody>
                                     <tr>
-                                      <td>{{ role.isGeneralStatisticAvailable }}</td>
+                                      <td *ngIf="role.isGeneralStatisticAvailable else defalt1"><span class="badge badge-success">{{ role.isGeneralStatisticAvailable }}</span></td>
+                                    <ng-template #defalt1> 
+                                        <td><span class="badge badge-warning">{{role.isGeneralStatisticAvailable}}</span></td>
+                                    </ng-template>
+                                    <td *ngIf="role.isProcessCreatorAvailable else defalt2"><span class="badge badge-success">{{ role.isProcessCreatorAvailable }}</span></td>
+                                    <ng-template #defalt2> 
+                                        <td><span class="badge badge-warning">{{role.isProcessCreatorAvailable}}</span></td>
+                                    </ng-template>
+                                    <td *ngIf="role.isJiraAvailable else defalt3"><span class="badge badge-success">{{ role.isJiraAvailable }}</span></td>
+                                    <ng-template #defalt3> 
+                                        <td><span class="badge badge-warning">{{role.isJiraAvailable}}</span></td>
+                                    </ng-template>
+                                    <td *ngIf="role.isAddingStaffAvailable else defalt4"><span class="badge badge-success">{{ role.isAddingStaffAvailable }}</span></td>
+                                    <ng-template #defalt4> 
+                                        <td><span class="badge badge-warning">{{role.isAddingStaffAvailable}}</span></td>
+                                    </ng-template>
+                                      <!-- <td>{{ role.isGeneralStatisticAvailable }}</td>
                                       <td>{{ role.isProcessCreatorAvailable }}</td>
                                       <td>{{ role.isJiraAvailable }}</td>
-                                      <td>{{ role.isAddingStaffAvailable }}</td>
+                                      <td>{{ role.isAddingStaffAvailable }}</td> -->
                                     </tr>
+                                  </tbody>
                                 </table>
                             </div>
                         </div>

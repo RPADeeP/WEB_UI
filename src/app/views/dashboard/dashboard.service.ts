@@ -6,11 +6,10 @@ export class DashboardService {
 
     constructor(private http: HttpClient){}
 
-    departUrl = 'http://26.237.245.64:8081/';
+    
     usersUrl = 'http://26.237.245.64:8080/';
 
     jwt = localStorage.getItem('jwtToken')
-    
     httpOptions = {
         headers: new HttpHeaders(
             { 
@@ -19,7 +18,7 @@ export class DashboardService {
             }
         )
     };
-    
+    departUrl = 'http://26.237.245.64:8081/';
     getAllDeparts(token){
         return this.http.get(this.departUrl + 'department/get-all/'+  token, this.httpOptions)
     }
@@ -28,18 +27,28 @@ export class DashboardService {
         return this.http.get(this.usersUrl + 'user/get-current-user/', this.httpOptions)
     }
 
-    getAllUsers(token){
-        return this.http.get(this.usersUrl + 'user/get-all/'+  token, this.httpOptions)
+    getAllUsersWithoutDepart(token){
+        return this.http.get(this.usersUrl + 'user/get-all-no-department/'+  token, this.httpOptions)
     }
     
-    addUserToDepartment(name,users,companyToken){
-        console.log({name, users, companyToken})
-        return this.http.post(this.departUrl + 'department/add-users',
+    addUserToDepartment(name,userId, departmentId){
+        console.log({name, userId, departmentId})
+        return this.http.post(this.usersUrl + 'user/add-user-to-department',
         {
           name,
-          users,
-          companyToken
+          userId,
+          departmentId
         },
         this.httpOptions)
+    }
+
+    deleteUserFromDepartment(userId){
+        console.log({userId})
+        return this.http.post(this.usersUrl + 'user/delete-user-from-department',
+        {
+            userId
+        },
+        this.httpOptions
+        )
     }
 }

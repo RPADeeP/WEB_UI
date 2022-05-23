@@ -7,7 +7,7 @@
                 <div class="card-body p-4">
                     <div class="text-value mb-4">Step {{ item }}</div>
                     <div class="mb-2">
-                        <label for="departaments">Choose departament:</label>
+                        <label for="departaments">Choose department:</label>
                         <select [(ngModel)]="choosenDapartment" class="btn-group dropdown-menu float-right" id="departaments" (click)="log()">
                             <option *ngFor="let depart of Departments" [ngValue]="depart" name="departament">
                                 {{depart.name}}

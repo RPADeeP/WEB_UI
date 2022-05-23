@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router'
 import { Steps } from './bpm/bpm.model';
 
 @Injectable({
@@ -10,11 +11,16 @@ export class Serv {
     departUrl = 'http://26.237.245.64:8081/';
     processUrl = 'http://26.237.245.64:8082/';
     taskerUrl = 'http://26.237.245.64:8083/';
+    router : Router;
     jwt = localStorage.getItem('jwtToken')    
     httpOptions = {
         headers: new HttpHeaders().set('Authorization',  'Bearer ' + this.jwt)
     };
 
+    logout(){
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    }
 
     constructor(private http: HttpClient) { }
 

@@ -1,24 +1,16 @@
 <app-header
   [navbarBrandRouterLink]="['/dashboard']"
   [fixed]="true"
-  [navbarBrandMinimized]="{}"
-  [sidebarToggler]="'lg'"
-  [asideMenuToggler]="'lg'">
-  <ul class="nav navbar-nav d-md-down-none">
-    <li class="nav-item px-3">
-      <a class="nav-link" href="#">Dashboard</a>
-    </li>
-    <li class="nav-item px-3">
-      <a class="nav-link" href="#">Users</a>
-    </li>
-    <li class="nav-item px-3">
-      <a class="nav-link" href="#">Settings</a>
-    </li>
-  </ul>
+  [navbarBrandMinimized]="{}">
+  
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item d-md-down-none">
       <!-- <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a> -->
-      <!-- <p>Your code: {{User.code}}</p> -->
+      <div *ngIf="User.firstName">
+        {{User.firstName}}
+        {{User.lastName}}
+        Code: {{User.code}}
+      </div>
     </li>
     
     <li class="nav-item dropdown" dropdown placement="bottom right">
@@ -28,7 +20,7 @@
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
         <div class="dropdown-header text-center"><strong>Account</strong></div>
         
-        <a class="dropdown-item" [routerLink]="['/login']"><i class="fa fa-lock"></i> Logout</a>
+        <a class="dropdown-item" (click)="logout()"><i class="fa fa-lock"></i> Logout</a>
       </div>
     </li>
   </ul>
@@ -41,13 +33,13 @@
   <!-- Main content -->
   <main class="main">
     <cui-breadcrumb>
-      <li class="breadcrumb-menu d-md-down-none">
+      <!-- <li class="breadcrumb-menu d-md-down-none">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
           <a class="btn" href="#"><i class="icon-speech"></i></a>
-          <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+          <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> Dashboard</a>
           <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
         </div>
-      </li>
+      </li> -->
     </cui-breadcrumb>
     <div class="container-fluid">
       <router-outlet></router-outlet>

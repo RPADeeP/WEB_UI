@@ -1,1 +1,27 @@
-<p>tasker works!</p>
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <!-- <div class="card mx-4 card-body text-center">
+                <button (click)="onSumbit()" type="button" class="btn btn-primary mb-3">SUMBIT Steps</button>
+                <a class="" [routerLink]="['/dashboard']"><i class="fa fa-long-arrow-left"></i> Back to main page</a>
+            </div> -->
+            <div *ngFor="let task of tasks" class="card mx-4 mt-4 inblock">
+                <div class="card-body p-4">
+                    <div>
+                        <div class="text-field">{{task.name}}</div>
+                        <div>{{task.description}}</div>
+                        <!-- <div>{{task.userApplicant}}</div>
+                        <div>{{task.userContractor}}</div> -->
+                        <div>{{task.status}}</div>
+                    </div>
+                    <!-- <button (click)="onSave()" type="button" class="btn btn-block btn-primary">SAVE Step</button> -->
+                </div>
+            </div>
+            
+        </div>
+      </div>
+     </div>
+    </main>
+</div>
