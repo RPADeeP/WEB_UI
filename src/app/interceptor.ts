@@ -6,7 +6,7 @@ import { map, filter } from 'rxjs/operators';
 @Injectable()
 export class Interceptor implements HttpInterceptor {
   intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("intercepterd")
+    console.log("intercepted")
     return next.handle(httpRequest)
   }
 }
