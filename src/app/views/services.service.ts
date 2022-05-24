@@ -189,7 +189,7 @@ export class Serv {
     this.httpOptions);
   }
 
-  public changeStatus(name: string, status: string, userContractor: User, description: string = "", companyToken: string){
+  public changeStatus(name: string, status: string, userContractor: User, description: string, companyToken: string){
     console.log({name, status, userContractor, description, companyToken})
     return this.http.post(this.taskerUrl + 'task/change-status',
     {

@@ -1,49 +1,55 @@
 <div class="app-body">
     <main class="main d-flex align-items-center">
-        <div class="container mt-4" style="border: 1px solid black; min-width: 100%;">
+        <div class="container" style="border: 1px solid black; min-width: 100%;">
             <div class="row inblock">
-                <div class="card col-md-6 col-lg-3 ml-1 mr-1">
-                    
-                    <div *ngFor="let task of Tasks" class="card">
-                        <div class="card-body p-4">
-                            <div>
-                                <div class="text-field">{{task.name}}</div>
-                                <div>{{task.description}}</div>
-                                <!-- <div>{{task.userApplicant}}</div>
-                                <div>{{task.userContractor}}</div> -->
-                                <div>{{task.status}}</div>
+                <div class="card col-md-6 col-lg-3 m-2">
+                    <div class="text-value text-center">TO DO</div>
+                    <div *ngFor="let task of Tasks">
+                        <div *ngIf="(task.status === 'TODO')" class="card">
+                            <div class="card-body p-4">
+                                <div>
+                                    <div class="text-field">{{task.name}}</div>
+                                    <div>{{task.description}}</div>
+                                    <!-- <div>{{task.userApplicant}}</div>
+                                    <div>{{task.userContractor}}</div> -->
+                                    <div>{{task.status}}</div>
+                                </div>
+                                <button (click)="changeTODO(task.name, task.description, task.userContractor)" type="button" class="btn btn-block btn-primary">Take</button>
                             </div>
-                            <!-- <button (click)="onSave()" type="button" class="btn btn-block btn-primary">SAVE Step</button> -->
                         </div>
                     </div>
                 </div>
-                <div class="card col-md-6 col-lg-3 ml-1 mr-1" style="border-right: 2px solid black;">
-                    
-                    <div *ngFor="let task of Tasks" class="card">
-                        <div class="card-body p-4">
-                            <div>
-                                <div class="text-field">{{task.name}}</div>
-                                <div>{{task.description}}</div>
-                                <!-- <div>{{task.userApplicant}}</div>
-                                <div>{{task.userContractor}}</div> -->
-                                <div>{{task.status}}</div>
+                <div class="card col-md-6 col-lg-3 m-2">
+                    <div class="text-value text-center">IN PROGRESS</div>
+                    <div *ngFor="let task of Tasks">
+                        <div *ngIf="(task.status === 'IN_PROGRESS')" class="card">
+                            <div class="card-body p-4">
+                                <div>
+                                    <div class="text-field">{{task.name}}</div>
+                                    <div>{{task.description}}</div>
+                                    <!-- <div>{{task.userApplicant}}</div>
+                                    <div>{{task.userContractor}}</div> -->
+                                    <div>{{task.status}}</div>
+                                </div>
+                                <button (click)="changeINPROG(task.name, task.description, task.userContractor)" type="button" class="btn btn-block btn-primary">Done</button>
                             </div>
-                            <!-- <button (click)="onSave()" type="button" class="btn btn-block btn-primary">SAVE Step</button> -->
                         </div>
                     </div>
                 </div>
-                <div class="card col-md-6 col-lg-3 ml-1 mr-1" style="border-left: 2px solid black;">
-                    
-                    <div *ngFor="let task of Tasks" class="card">
-                        <div class="card-body p-4">
-                            <div>
-                                <div class="text-field">{{task.name}}</div>
-                                <div>{{task.description}}</div>
-                                <!-- <div>{{task.userApplicant}}</div>
-                                <div>{{task.userContractor}}</div> -->
-                                <div>{{task.status}}</div>
+                <div class="card col-md-6 col-lg-3 m-2">
+                    <div class="text-value text-center">DONE</div>
+                    <div *ngFor="let task of Tasks">
+                        <div *ngIf="(task.status === 'DONE')" class="card" style="min-height: 80%;">
+                            <div class="card-body p-4">
+                                <div>
+                                    <div class="text-field">{{task.name}}</div>
+                                    <div>{{task.description}}</div>
+                                    <!-- <div>{{task.userApplicant}}</div>
+                                    <div>{{task.userContractor}}</div> -->
+                                    <div>{{task.status}}</div>
+                                </div>
+                                <!-- <button (click)="onSave()" type="button" class="btn btn-block btn-primary">SAVE Step</button> -->
                             </div>
-                            <!-- <button (click)="onSave()" type="button" class="btn btn-block btn-primary">SAVE Step</button> -->
                         </div>
                     </div>
                 </div>

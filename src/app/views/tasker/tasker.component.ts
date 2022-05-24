@@ -63,9 +63,21 @@ export class TaskerComponent implements OnInit {
   createTask(){
     this.serv.ceateTask(this.taskName, this.description, this.userApplicant, this.userContractor, "TODO", this.companyToken).subscribe();
   }
-  
-  changeStatus(){
-    // this.serv.changeStatus(name, status, userContractor, description, companyToken).subscribe();
+
+  changeTODO(name, description, userContractor){
+    this.serv.changeStatus(name, "IN_PROGRESS", userContractor, description, this.companyToken).subscribe(
+      () => {
+        window.location.reload();
+      }
+    );
+  }
+
+  changeINPROG(name, description, userContractor){
+    this.serv.changeStatus(name, "DONE", userContractor, description, this.companyToken).subscribe(
+      () => {
+        window.location.reload();
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -78,8 +90,8 @@ export class TaskerComponent implements OnInit {
     );
     this.serv.getTasks(this.companyToken).subscribe(
       (data: any) => { 
-        // this.Tasks=data; 
-        // console.log(this.Tasks);
+        this.Tasks=data; 
+        console.log(this.Tasks);
       }
     );
     this.serv.getAllUsers(localStorage.getItem('companyToken')).subscribe(
