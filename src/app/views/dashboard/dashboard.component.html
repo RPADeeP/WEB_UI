@@ -5,39 +5,77 @@
     
       <div attr.id="departElem{{department.name}}" class="card text-white bg-info">
         <div class="card-body pb-4">
-          <div class="btn-group float-right" dropdown>
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
-              <i class="icon-settings"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
           <div (click)="toggleDepartment(department.name)" >
             <div class="text-value">{{department.name}}</div>
-            <div>Company token: {{ department.companyToken }}</div>
+            <div>Department id: {{ department.id }}</div>
             <div>Number of workers: {{ department.users.length }}</div>
           </div>
         </div>
       </div>
     
-    <div attr.id="userElem{{department.name}}" class="hide">
-      <div class="card" style="width: 60%;">
-        <button type="button" class="btn btn-primary" (click)="toggleDepartment(department.name)" style="width:100%">
-          GO back
-        </button>
-        <div class="card-body pb-4">
-          <div class="text-value">{{department.name}}</div>
-          <div>Company token: {{ department.companyToken }}</div>
-          <div>Number of workers: {{ department.users.length }}</div>
-          
-        </div>
+      <div attr.id="userElem{{department.name}}" class="hide">
+        <div class="card" style="width: 60%;">
+          <div>
+            <div class="inblock">
+              <button type="button" class="btn btn-primary m-1" (click)="toggleDepartment(department.name)" style="width:100%">
+                GO back
+              </button>
+            </div>
+            <div class="inblock">
+              <button type="button" class="btn badge-warning m-1" (click)="toggleDepartment(department.name)" style="width:100%">
+                Update
+              </button>
+              <button type="button" class="btn delite m-1" (click)="deleteDepartment(department.id)" style="width:100%">
+                Delete
+              </button>
+            </div>
+            <div class="inblock">
+              <div class="input-group m-1">
+                <input [(ngModel)]="newName" name="newName" type="text" class="form-control" placeholder="New department name" autocomplete="newName" required>
+                <div class="input-group-append">
+                  <button (click)="changeDepartmentName(department.id)" type="button" class="btn btn-block btn-success">Create</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body pb-4">
+            <div class="text-value">{{department.name}}</div>
+            <div>Department id: {{ department.id }}</div>
+            <div>Number of workers: {{ department.users.length }}</div>
+            
+          </div>
 
-        <div style="border-top: 2px solid black;">
-          <table class="table table-bordered table-striped table-sm" style="width:100%;">
+          <div style="border-top: 2px solid black;">
+            <table class="table table-bordered table-striped table-sm" style="width:100%;">
+              <thead>
+              <tr>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>middleName</th>
+                <th>UserName</th>
+                <th>roleName</th>
+                <th>Delite</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of department.users" class="card-body pb-4">
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.middleName }}</td>
+                <td>{{ user.code }}</td>
+                <td *ngIf="!(user.role.name === 'default') else defalt"><span class="badge badge-success">{{ user.role.name }}</span></td>
+                <ng-template #defalt> 
+                  <td><span class="badge badge-warning">Default!</span></td>
+                </ng-template>
+                <td><button class="btn" (click)="deleteUserFromDepartment(user.id)"><i class="icon-minus"></i></button></td>
+              </tr>
+            </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div id="allUsers" class="card float-right p-3" style="width: 100%;">
+          <table class="table table-bordered table-striped table-sm" style="width:100%">
             <thead>
             <tr>
               <th>firstName</th>
@@ -45,134 +83,35 @@
               <th>middleName</th>
               <th>UserName</th>
               <th>roleName</th>
-              <th>Delite</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of department.users" class="card-body pb-4">
+            <tr *ngFor="let user of Users" class="card-body pb-4">
               <td>{{ user.firstName }}</td>
               <td>{{ user.lastName }}</td>
               <td>{{ user.middleName }}</td>
               <td>{{ user.code }}</td>
               <td *ngIf="!(user.role.name === 'default') else defalt"><span class="badge badge-success">{{ user.role.name }}</span></td>
-              <ng-template #defalt> 
-                <td><span class="badge badge-warning">Default!</span></td>
-              </ng-template>
-              <td><button class="btn" (click)="deleteUserFromDepartment(user.id)"><i class="icon-minus"></i></button></td>
+                <ng-template #defalt> 
+                  <td><span class="badge badge-warning">Default!</span></td>
+                </ng-template>
+              <td><button class="btn" (click)="addUserDeparts(department.name, user.id, department.id)"><i class="icon-plus"></i></button></td>
             </tr>
           </tbody>
           </table>
         </div>
       </div>
-      
-      <div id="allUsers" class="card float-right p-3" style="width: 100%;">
-        <table class="table table-bordered table-striped table-sm" style="width:100%">
-          <thead>
-          <tr>
-            <th>firstName</th>
-            <th>lastName</th>
-            <th>middleName</th>
-            <th>UserName</th>
-            <th>roleName</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of Users" class="card-body pb-4">
-            <td>{{ user.firstName }}</td>
-            <td>{{ user.lastName }}</td>
-            <td>{{ user.middleName }}</td>
-            <td>{{ user.code }}</td>
-            <td *ngIf="!(user.role.name === 'default') else defalt"><span class="badge badge-success">{{ user.role.name }}</span></td>
-              <ng-template #defalt> 
-                <td><span class="badge badge-warning">Default!</span></td>
-              </ng-template>
-            <td><button class="btn" (click)="addUserDeparts(department.name, user.id, department.id)"><i class="icon-plus"></i></button></td>
-          </tr>
-        </tbody>
-        </table>
-      </div>
     </div>
-  </div>
   
     
-    <!-- <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-info">
-        <div class="card-body pb-0">
-          <div class="btn-group float-right" dropdown>
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
-              <i class="icon-settings"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+    <div id="createDepButt" class="col-sm-6 col-lg-3" style="min-height: 50%;">
+      <div class="card text-white bg-info"> 
+        <!-- class bg-info is background color -->
+        <div class="card-body text-center">
+            <a class="btn btn-transparent" [routerLink]="['/create-department']"><i class="icon-plus" style="font-size: 468%;"></i></a>
           </div>
-          <div class="text-value">HR</div>
-          <div>Members online: 4</div>
-        </div>
-        
       </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-primary">
-        <div class="card-body pb-0">
-          <div class="btn-group float-right" dropdown>
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
-              <i class="icon-settings"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          <div class="text-value">Marketing</div>
-          <div>Members online: 12</div>
-        </div>
-        
-      </div>
-    </div>
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-warning">
-        <div class="card-body pb-0">
-          <div class="btn-group float-right" dropdown>
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
-              <i class="icon-settings"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          <div class="text-value">Sales</div>
-          <div>Members online: 9</div>
-        </div>
-        
-      </div>
-    </div>
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-danger">
-        <div class="card-body pb-0">
-          <div class="btn-group float-right" dropdown>
-            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
-              <i class="icon-settings"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          <div class="text-value">Finance</div>
-          <div>Members online: 5</div>
-        </div>
-        
-      </div>
-    </div> -->
-  </div><!--/.row-->
-  
+
+  </div>
 </div>

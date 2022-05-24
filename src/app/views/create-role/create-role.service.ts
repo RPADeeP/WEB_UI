@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ErrorHandler, Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 import { createdRoleData } from './create-role.model';
 
 @Injectable({ providedIn: 'root' })
