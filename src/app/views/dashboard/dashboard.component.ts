@@ -95,6 +95,7 @@ export class DashboardComponent implements OnInit {
       for (let index = 0; index < this.Departments.length; index++) {
         document.getElementById("departElem" + this.Departments[index].name).classList.toggle("hide");
       }
+      document.getElementById("createDepButt").classList.toggle("hide");
       //show inform about choosen depatment
       document.getElementById("userElem" + ind).classList.toggle("inblock");
       //change department width
@@ -120,22 +121,39 @@ export class DashboardComponent implements OnInit {
   addUserDeparts(name,usersId, departmentId){
     // this.returnedUser =  users;
     console.log(name, usersId, departmentId);
-    this.DashboardService.addUserToDepartment(name,usersId, departmentId).subscribe();
+    this.DashboardService.addUserToDepartment(name,usersId, departmentId).subscribe(
+      () => {
+        window.location.reload();
+      }
+    );
     
   }
   deleteUserFromDepartment(usersId){
-    this.DashboardService.deleteUserFromDepartment(usersId).subscribe();
+    this.DashboardService.deleteUserFromDepartment(usersId).subscribe(
+      () => {
+        window.location.reload();
+      }
+    );
+  }
+  deleteDepartment(departmentId){
+    this.DashboardService.deleteDepartment(departmentId).subscribe(
+      () => {
+        window.location.reload();
+      }
+    );
+  }
+  newName: string;
+  changeDepartmentName(departmentId){
+    this.DashboardService.changeDepartmentName(departmentId, this.newName).subscribe(
+      () => {
+        window.location.reload();
+      }
+    );
   }
 
   ngOnInit(): void {
     this.companyToken = localStorage.getItem('companyToken');
     this.jwtToken = localStorage.getItem('jwtToken')
-
-    if(!this.companyToken && !this.jwtToken){
-      this.router.navigate(['/login']);
-    }
-
-
 
     this.DashboardService.getAllDeparts(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 

@@ -8,6 +8,7 @@ export class DashboardService {
 
     
     usersUrl = 'http://26.237.245.64:8080/';
+    departUrl = 'http://26.237.245.64:8081/';
 
     jwt = localStorage.getItem('jwtToken')
     httpOptions = {
@@ -18,7 +19,7 @@ export class DashboardService {
             }
         )
     };
-    departUrl = 'http://26.237.245.64:8081/';
+    
     getAllDeparts(token){
         return this.http.get(this.departUrl + 'department/get-all/'+  token, this.httpOptions)
     }
@@ -47,6 +48,22 @@ export class DashboardService {
         return this.http.post(this.usersUrl + 'user/delete-user-from-department',
         {
             userId
+        },
+        this.httpOptions
+        )
+    }
+
+    deleteDepartment(departmentId){
+        console.log({departmentId})
+        return this.http.post(this.departUrl + 'department/delete/' + departmentId, this.httpOptions)
+    }
+
+    changeDepartmentName(departmentId, newName){
+        console.log({departmentId, newName})
+        return this.http.post(this.departUrl + 'department/change-name', 
+        {
+            departmentId,
+            newName
         },
         this.httpOptions
         )
