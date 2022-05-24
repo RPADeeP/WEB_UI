@@ -26,7 +26,7 @@ export class BPMComponent implements OnInit {
   decimalFields:any;
   steps : Array<Steps> = new Array();
   
-  
+  actionName;
   decimalFieldsValues;
   StringFieldsValues;
   descriptionFieldValues;
@@ -55,7 +55,7 @@ export class BPMComponent implements OnInit {
 
   onSumbit(){
     console.log(this.steps);
-   this.serv.createAction("actionName", this.description, this.steps,this.statusAction, this.companyToken).subscribe();  
+   this.serv.createAction(this.actionName, this.description, this.steps,this.statusAction, this.companyToken).subscribe();  
    
   }
 
