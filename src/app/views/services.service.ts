@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router'
 import { Steps } from './bpm/bpm.model';
-import { UserData } from './users/users.model';
+import { User } from './model';
 
 @Injectable({
   providedIn: 'root' 
@@ -145,9 +145,7 @@ export class Serv {
   /*----------departments----------*/
   
   
-  /*----------roles----------*/
-
-  
+  /*----------actions----------*/
 
   public createAction(name: String, description: String, steps: Steps[],status, companyToken){
     return this.http.post(this.processUrl + 'bpm/create-action',
@@ -168,20 +166,42 @@ export class Serv {
     }
   }
 
+  /*----------actions----------*/
+
+
+  /*----------tasks----------*/
+
   public getTasks(companyToken){
-    return this.http.get(this.taskerUrl+ 'task/get-all/' +  companyToken,  this.httpOptions)
+    return this.http.get(this.taskerUrl + 'task/get-all/' +  companyToken,  this.httpOptions)
   }
 
-  public ceateTask(name: String, description: String, userApplicant: UserData, userContractor: UserData, status: String, companyToken: String){
-    return this.http.post(this.taskerUrl+ 'task/create', {
+  public ceateTask(name: string, description: string, userApplicant: User, userContractor: User, status: string, companyToken: string){
+    console.log({name,description,userApplicant,userContractor,status,companyToken})
+    return this.http.post(this.taskerUrl + 'task/create', 
+    {
       name,
       description,
       userApplicant,
       userContractor,
       status,
       companyToken
-    }
-    );
+    },
+    this.httpOptions);
   }
+
+  public changeStatus(name: string, status: string, userContractor: User, description: string = "", companyToken: string){
+    console.log({name, status, userContractor, description, companyToken})
+    return this.http.post(this.taskerUrl + 'task/change-status',
+    {
+      name, 
+      status, 
+      userContractor, 
+      description, 
+      companyToken
+    },
+    this.httpOptions)
+  }
+
+  /*----------tasks----------*/
 
 }

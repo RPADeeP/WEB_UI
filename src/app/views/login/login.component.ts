@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router';
 import { LoginService } from './login.service';
-import { User } from './user';
+import { loginUserData } from '../model';
 import {Location} from '@angular/common';
 
 @Component({
@@ -11,8 +11,8 @@ import {Location} from '@angular/common';
 })
 export class LoginComponent {
   constructor(private loginService: LoginService, private router:Router) { }
-  password: User;
-  code: User;
+  password: loginUserData;
+  code: loginUserData;
   returnedData: any;
 
   onClickLogin(){

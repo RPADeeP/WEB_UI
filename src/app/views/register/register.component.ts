@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegisterService } from './register.service';
-import { registerUserData } from './register.model';
-import { FormControl } from '@angular/forms';
+import { registerUserData } from '../model';
 import {Router} from '@angular/router';
 
 @Component({
@@ -18,12 +17,12 @@ export class RegisterComponent implements OnInit {
   middleName: registerUserData;
   lastName: registerUserData;
   password: registerUserData;
+
   companyToken: string = "";
   
   companyName: string = "";
 
   returnedData: any;
-  //passwordConfirm: any;
 
   ngOnInit(): void {
   }

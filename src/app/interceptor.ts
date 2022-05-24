@@ -17,20 +17,21 @@ export class Interceptor implements HttpInterceptor {
       headers: req.headers.set('Session', '123456789'),
     })
 
-    return next.handle(authReq).pipe(
-      tap(
-        (event) => {
-          if (event instanceof HttpResponse)
-            console.log('Server response');
-        },
-        (err) => {
-          if (err instanceof HttpErrorResponse) {
-            if (err.status == 401)
-              this.router.navigateByUrl('/login');
-              localStorage.clear();                 
-          }
-        }
-      )
-    )
+    return next.handle(authReq)
+    // .pipe(
+    //   tap(
+    //     (event) => {
+    //       if (event instanceof HttpResponse)
+    //         console.log('Server response');
+    //     },
+    //     (err) => {
+    //       if (err instanceof HttpErrorResponse) {
+    //         if (err.status == 401)
+    //           this.router.navigateByUrl('/login');
+    //           localStorage.clear();                 
+    //       }
+    //     }
+    //   )
+    // )
   }
 }

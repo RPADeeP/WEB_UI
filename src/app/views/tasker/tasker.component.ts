@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../model';
 import { Serv } from '../services.service';
 import { Task } from './tasker.model'
 @Component({
@@ -51,14 +52,42 @@ export class TaskerComponent implements OnInit {
   ];
 
   taskName: string;
+  description: string;
+  userContractor: User;
+
+  userApplicant: User;
+  companyToken: string;
+
+  Users: User[];
+  
+  createTask(){
+    this.serv.ceateTask(this.taskName, this.description, this.userApplicant, this.userContractor, "TODO", this.companyToken).subscribe();
+  }
+  
+  changeStatus(){
+    // this.serv.changeStatus(name, status, userContractor, description, companyToken).subscribe();
+  }
 
   ngOnInit(): void {
-    this.serv.getTasks(localStorage.getItem('companyToken')).subscribe(
+    this.companyToken = localStorage.getItem('companyToken');
+    this.serv.getCurrentUser().subscribe(
+      (data: any) => { 
+        this.userApplicant=data; 
+        console.log(this.userApplicant);
+      }
+    );
+    this.serv.getTasks(this.companyToken).subscribe(
       (data: any) => { 
         // this.Tasks=data; 
         // console.log(this.Tasks);
       }
     );
+    this.serv.getAllUsers(localStorage.getItem('companyToken')).subscribe(
+      (data: any) => { 
+        this.Users=data; 
+        console.log(this.Users);
+      }
+    )
   }
 
 }

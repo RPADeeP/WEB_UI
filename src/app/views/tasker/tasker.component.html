@@ -49,20 +49,35 @@
                 </div>
                 
             </div>
-            <div class="card-body p-4">
-                <form>
-                  <h1 class="text-center">Create role</h1>
-                  <p class="text-center">Create new role</p>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="icon-user"></i></span>
-                    </div>
-                    <input [(ngModel)]="taskName" name="roleName" type="text" class="form-control" placeholder="Role name" autocomplete="roleName" required>
-                  </div>
-  
-                  <!-- <button (click)="createRole()" type="button" class="btn btn-block btn-success">Create</button> -->
-                </form>
-              </div >
+            <div class="card col-md-6 col-lg-3">
+                <div class="card-body p-4">
+                    <form>
+                        <h1 class="text-center">Create role</h1>
+                        <p class="text-center">Create new role</p>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-user"></i></span>
+                            </div>
+                            <input [(ngModel)]="taskName" name="taskName" type="text" class="form-control" placeholder="Task name" autocomplete="taskName" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-user"></i></span>
+                            </div>
+                            <input [(ngModel)]="description" name="description" type="text" class="form-control" placeholder="Description" autocomplete="description" required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="users">Choose users:</label>
+                            <select [(ngModel)]="userContractor" [ngModelOptions]="{standalone: true}" class="btn-group dropdown-menu float-right" id="users">
+                                <option *ngFor="let user of Users" [ngValue]="user" name="user">
+                                    {{user.firstName}}
+                                </option>
+                            </select>
+                        </div>
+                        <button (click)="createTask()" type="button" class="btn btn-block btn-success">Create</button>
+                    </form>
+                </div >
+            </div>
             <div class="text-center">
                     <!-- <button (click)="onSumbit()" type="button" class="btn btn-primary mb-3">SUMBIT Steps</button> -->
                     <a class="" [routerLink]="['/dashboard']"><i class="fa fa-long-arrow-left"></i> Back to main page</a>

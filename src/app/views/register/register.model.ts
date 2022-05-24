@@ -4,4 +4,4 @@ export class registerUserData {
     lastName: string;
     password: string;
     companyToken: any;
-    }
+}
