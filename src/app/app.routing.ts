@@ -65,24 +65,10 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'create-role',
-    component: CreateRoleComponent,
-    data: {
-      title: 'Create Role Page'
-    }
-  },
-  {
     path: 'bpm',
     component: BPMComponent,
     data: {
       title: 'BPM'
-    }
-  },
-  {
-    path: 'tasker',
-    component: TaskerComponent,
-    data: {
-      title: 'Tasker'
     }
   },
   {
@@ -112,6 +98,14 @@ export const routes: Routes = [
       {
         path: 'users',
         loadChildren: () => import('./views/users/users.module').then(m => m.UsersModule)
+      },
+      {
+        path: 'create-role',
+        loadChildren: () => import('./views/create-role/create-role.module').then(m => m.CreateRoleModule)
+      },
+      {
+        path: 'tasker',
+        loadChildren: () => import('./views/tasker/tasker.module').then(m => m.TaskerModule)
       },
     ]
   },

@@ -50,9 +50,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 
-
 import { BPMComponent } from './views/bpm/bpm.component';
-import { TaskerComponent } from './views/tasker/tasker.component';
 
 import { Interceptor } from './interceptor';
 
@@ -87,9 +85,7 @@ import { Interceptor } from './interceptor';
     RegisterComponent,
     CreateDepartmentComponent,
     DepartmentsComponent,
-    CreateRoleComponent,
     BPMComponent,
-    TaskerComponent,
     ActionsComponent,
     
   ],
