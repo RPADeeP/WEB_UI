@@ -25,10 +25,7 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { LoginService } from './views/login/login.service';
 import { RegisterComponent } from './views/register/register.component';
-import { CreateDepartmentComponent } from './views/create-department/create-department.component';
 import { DepartmentsComponent } from './views/departments/departments.component';
-import { CreateRoleComponent } from './views/create-role/create-role.component';
-import { ActionsComponent } from './views/actions/actions.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -50,10 +47,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 
-import { BPMComponent } from './views/bpm/bpm.component';
 
 import { Interceptor } from './interceptor';
-import { UserPageComponent } from './views/user-page/user-page.component';
 
 
 @NgModule({
@@ -84,12 +79,7 @@ import { UserPageComponent } from './views/user-page/user-page.component';
     P500Component,
     LoginComponent,
     RegisterComponent,
-    CreateDepartmentComponent,
-    DepartmentsComponent,
-    BPMComponent,
-    ActionsComponent,
-    UserPageComponent,
-    
+    DepartmentsComponent
   ],
   providers: [
     LoginService,

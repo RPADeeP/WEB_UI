@@ -52,38 +52,10 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'create-department',
-    component: CreateDepartmentComponent,
-    data: {
-      title: 'Create Department Page'
-    }
-  },
-  {
     path: 'departments',
     component: DepartmentsComponent,
     data: {
       title: 'Departments Page'
-    }
-  },
-  {
-    path: 'bpm',
-    component: BPMComponent,
-    data: {
-      title: 'BPM'
-    }
-  },
-  {
-    path: 'actions',
-    component: ActionsComponent,
-    data: {
-      title: 'Actions Page'
-    }
-  },
-  {
-    path: 'user-page',
-    component: UserPageComponent,
-    data: {
-      title: 'User Page'
     }
   },
   {
@@ -114,6 +86,22 @@ export const routes: Routes = [
       {
         path: 'tasker',
         loadChildren: () => import('./views/tasker/tasker.module').then(m => m.TaskerModule)
+      },
+      {
+        path: 'user-page',
+        loadChildren: () => import('./views/user-page/user-page.module').then(m => m.UserPageModule)
+      },
+      {
+        path: 'actions',
+        loadChildren: () => import('./views/actions/actions.module').then(m => m.ActionsModule)
+      },
+      {
+        path: 'bpm',
+        loadChildren: () => import('./views/bpm/bpm.module').then(m => m.BPMModule)
+      },
+      {
+        path: 'create-department',
+        loadChildren: () => import('./views/create-department/create-department.module').then(m => m.CreateDepartmentModule)
       },
     ]
   },
