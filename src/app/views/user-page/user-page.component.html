@@ -1,1 +1,54 @@
-<p>user-page works!</p>
+<div class="row" >
+    <div class="col-lg-12" id="shadow">
+        <div class="card mx-4 mt-4">
+            <div id="allUsers" class="card-body pb-4" style="width: 100%;">
+                <!-- <table class="table table-bordered table-striped table-sm" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>firstName</th>
+                        <th>lastName</th>
+                        <th>middleName</th>
+                        <th>UserName</th>
+                        <th>roleName</th>
+                        <th>changeRole</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of Users">
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.middleName }}</td>
+                        <td>{{ user.code }}</td>
+                        <td *ngIf="!(user.role.name === 'default') else defalt"><span class="badge badge-success">{{ user.role.name }}</span></td>
+                        <ng-template #defalt> 
+                            <td><span class="badge badge-warning">Default!</span></td>
+                        </ng-template>
+                        <td attr.id="selectElem{{user.code}}">
+                            <button class="btn" (click)="togleHideAndShadow(user.id)"><i class="icon-plus"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+                </table> -->
+            </div>
+            <div class="card-body p-4 text-center">
+                <!-- <a class="" [routerLink]="['/dashboard']"><i class="fa fa-long-arrow-left"></i>Back to main page</a> -->
+            </div>
+        </div>
+    </div>
+    <!-- <div class="card mx-4 hide" id="changeRole">
+        <div class="card-body p-4">
+            <form>
+                <h1>Change role</h1>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="icon-list"></i></span>
+                    </div>
+                    <select [(ngModel)]="selectedRole" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let role of Role" [ngValue]="role"> {{role.name}}</option>
+                    </select>
+                </div>
+                <button (click)="addRoleToUser()" type="button" class="btn btn-block btn-primary">Change role</button>
+          </form>
+        </div>
+    </div> -->
+</div>

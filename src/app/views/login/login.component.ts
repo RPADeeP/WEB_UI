@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router';
-import { LoginService } from './login.service';
+import { Serv } from '../services.service';
 import { loginUserData } from '../model';
 import {Location} from '@angular/common';
 
@@ -10,13 +10,13 @@ import {Location} from '@angular/common';
   templateUrl: 'login.component.html'
 })
 export class LoginComponent {
-  constructor(private loginService: LoginService, private router:Router) { }
+  constructor(private serv: Serv, private router:Router) { }
   password: loginUserData;
   code: loginUserData;
   returnedData: any;
 
   onClickLogin(){
-    this.loginService.login(this.code,this.password).subscribe(
+    this.serv.login(this.code,this.password).subscribe(
       
       (data: any) => { 
         this.returnedData=data; 

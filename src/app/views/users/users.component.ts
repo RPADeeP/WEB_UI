@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserData, role } from './users.model';
 import { HttpClient } from '@angular/common/http';
-import { UsersService } from './users.service'
+import { Serv } from '../services.service';
 
 @Component({
   selector: 'app-users',
@@ -10,7 +10,7 @@ import { UsersService } from './users.service'
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private http: HttpClient, private UsersService: UsersService){}
+  constructor(private http: HttpClient, private serv: Serv){}
 
   companyToken: string;
 
@@ -73,13 +73,13 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.companyToken = localStorage.getItem('companyToken');
-    this.UsersService.getAllUsers(localStorage.getItem('companyToken')).subscribe(
+    this.serv.getAllUsers(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Users=data; 
         console.log(this.Users);
       }
     )
-    this.UsersService.getAllRoles(localStorage.getItem('companyToken')).subscribe(
+    this.serv.getAllRoles(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Role=data; 
         console.log(this.Role);
@@ -97,7 +97,7 @@ export class UsersComponent implements OnInit {
   selectedRole: role;
   addRoleToUser(){
     console.log(this.selectedRole)
-    this.UsersService.addRoleToUser(this.userId, this.selectedRole).subscribe(
+    this.serv.addRoleToUser(this.userId, this.selectedRole).subscribe(
       () => 
       {
         window.location.reload();

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Serv } from '../services.service';
-import { Steps } from './bpm.model'
+import { Steps } from '../model'
 import { DepartmentsData } from '../dashboard/dashboard.model';
 
 @Component({

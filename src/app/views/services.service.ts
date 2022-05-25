@@ -96,6 +96,17 @@ export class Serv {
   
 
   /*----------departments----------*/ 
+  
+  createDep(name, companyToken) {
+    console.log({name, companyToken});
+    return this.http.post(this.departUrl + 'department/create',
+        {
+            name,
+            companyToken
+        },
+        this.httpOptions
+    );
+  }
 
   public getAllDeparts(token){
     return this.http.get(this.departUrl + 'department/get-all/'+  token, this.httpOptions)
@@ -128,7 +139,7 @@ export class Serv {
 
   public deleteDepartment(departmentId){
     console.log({departmentId})
-    return this.http.post(this.departUrl + 'department/delete/' + departmentId, this.httpOptions)
+    return this.http.post(this.departUrl + 'department/delete/' + departmentId,{}, this.httpOptions)
   }
 
   public changeDepartmentName(departmentId, newName){
@@ -166,6 +177,10 @@ export class Serv {
     }
   }
 
+  getAllActions(token){
+    return this.http.get(this.processUrl + 'bpm/get-all-actions/'+  token, this.httpOptions)
+  }
+
   /*----------actions----------*/
 
 
@@ -189,10 +204,11 @@ export class Serv {
     this.httpOptions);
   }
 
-  public changeStatus(name: string, status: string, userContractor: User, description: string, companyToken: string){
+  public changeTask(name: string, status: string, userContractor: User, description: string, companyToken: string, id: string){
     console.log({name, status, userContractor, description, companyToken})
     return this.http.post(this.taskerUrl + 'task/change-status',
     {
+      id,
       name, 
       status, 
       userContractor, 

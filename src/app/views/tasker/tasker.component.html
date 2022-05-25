@@ -5,46 +5,19 @@
                 <div class="card col-md-6 col-lg-3 m-2">
                     <div class="text-value text-center">TO DO</div>
                     <div *ngFor="let task of Tasks">
-                        <div *ngIf="((task.status === 'TODO') && !(task.userApplicant.id === userApplicant.id)) else change" class="card">
+                        <div *ngIf="(task.status === 'TODO')" class="card">
                             <div class="card-body p-4">
                                 <div>
                                     <div class="text-field">{{task.name}}</div>
                                     <div>{{task.description}}</div>
-                                    <div>{{task.userApplicant.firstName}}</div>
-                                    <div>{{task.userContractor.firstName}}</div>
                                     <div>{{task.status}}</div>
                                 </div>
-                                <button (click)="changeTODO(task.name, task.description, task.userContractor)" type="button" class="btn btn-block btn-primary">Take</button>
+                                <button (click)="changeStatus(task.name, task.description, task.userContractor, 'IN_PROGRESS', task.id)" type="button" class="btn btn-block btn-primary">Take</button>
+                                <button *ngIf="(task.userApplicant.code === userApplicant.code)" (click)="hideUpdate(task.name, task.description, task.status, task.userContractor, task.id)" type="button" class="btn btn-block btn-primary">Change</button>
                             </div>
                         </div>
-                        <ng-template *ngIf="(task.status === 'TODO')" #change> 
-                            <div class="card-body p-4">
-                                <form>
-                                    <h1 class="text-center">Create role</h1>
-                                    <p class="text-center">Create new role</p>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="icon-user"></i></span>
-                                        </div>
-                                        <input [(ngModel)]="taskName" name="taskName" type="text" class="form-control" placeholder="Task name" autocomplete="taskName" required>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="icon-user"></i></span>
-                                        </div>
-                                        <input [(ngModel)]="description" name="description" type="text" class="form-control" placeholder="Description" autocomplete="description" required>
-                                    </div>
-                                    <div class="mb-2">
-                                        <label for="users">Choose users:</label>
-                                        <select [(ngModel)]="userContractor" [ngModelOptions]="{standalone: true}" class="btn-group dropdown-menu float-right" id="users">
-                                            <option *ngFor="let user of Users" [ngValue]="user" name="user">
-                                                {{user.firstName}}
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <button (click)="createTask()" type="button" class="btn btn-block btn-success">Create</button>
-                                </form>
-                            </div>
+                        <ng-template  #change>
+                            
                         </ng-template>
                     </div>
                 </div>
@@ -60,7 +33,12 @@
                                     <div>{{task.userContractor}}</div> -->
                                     <div>{{task.status}}</div>
                                 </div>
-                                <button (click)="changeINPROG(task.name, task.description, task.userContractor)" type="button" class="btn btn-block btn-primary">Done</button>
+                                <div class="input-group mb-2">
+                                    
+                                    <button (click)="changeStatus(task.name, task.description, task.userContractor, 'TODO', task.id)" type="button" class="btn btn-l btn-primary"><i class="fa fa-arrow-left"></i> TO DO</button>
+                                    <button (click)="changeStatus(task.name, task.description, task.userContractor, 'DONE', task.id)" type="button" class="btn btn-r btn-primary">DONE <i class="fa fa-arrow-right"></i></button>
+                                </div>
+                                <button *ngIf="(task.userApplicant.code === userApplicant.code)" (click)="hideUpdate(task.name, task.description, task.status, task.userContractor, task.id)" type="button" class="btn btn-block btn-primary">Change</button>
                             </div>
                         </div>
                     </div>
@@ -77,7 +55,8 @@
                                     <div>{{task.userContractor}}</div> -->
                                     <div>{{task.status}}</div>
                                 </div>
-                                <!-- <button (click)="onSave()" type="button" class="btn btn-block btn-primary">SAVE Step</button> -->
+                                <button (click)="changeStatus(task.name, task.description, task.userContractor, 'IN_PROGRESS', task.id)" type="button" class="btn btn-block btn-primary">IN PROGRESS</button>
+                                <button *ngIf="(task.userApplicant.code === userApplicant.code)" (click)="hideUpdate(task.name, task.description, task.status, task.userContractor, task.id)" type="button" class="btn btn-block btn-primary">Change</button>
                             </div>
                         </div>
                     </div>
@@ -87,8 +66,8 @@
             <div class="card col-md-6 col-lg-3">
                 <div class="card-body p-4">
                     <form>
-                        <h1 class="text-center">Create role</h1>
-                        <p class="text-center">Create new role</p>
+                        <h1 class="text-center">Create task</h1>
+                        <p class="text-center">Create new task</p>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-user"></i></span>
@@ -99,7 +78,7 @@
                             <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-user"></i></span>
                             </div>
-                            <input [(ngModel)]="description" name="description" type="text" class="form-control" placeholder="Description" autocomplete="description" required>
+                            <textarea [(ngModel)]="description" name="description" type="text" class="form-control" placeholder="Description" autocomplete="description" required></textarea>
                         </div>
                         <div class="mb-2">
                             <label for="users">Choose users:</label>
@@ -112,6 +91,45 @@
                         <button (click)="createTask()" type="button" class="btn btn-block btn-success">Create</button>
                     </form>
                 </div >
+            </div>
+            <div class="card hide" id="updateTask">
+                <div class="card-body p-4">
+                    <form>
+                        <h1 class="text-center">Change task</h1>
+                        Task name
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-user"></i></span>
+                            </div>
+                            <input [(ngModel)]="taskName" name="taskName" type="text" class="form-control" placeholder="New task name" autocomplete="updateName" required>
+                        </div>
+                        Status
+                        <div class="mb-2">
+                            <label for="stat">Choose status:</label>
+                            <select [(ngModel)]="status" name="status" class="btn-group dropdown-menu float-right">
+                                <option *ngFor="let status of ['TODO', 'IN_PROGRESS', 'DONE']" name="stat">
+                                    {{status}}
+                                </option>
+                            </select>
+                        </div>
+                        Description
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-user"></i></span>
+                            </div>
+                            <textarea [(ngModel)]="description" name="description" type="text" class="form-control" placeholder="Description" autocomplete="description" required></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label for="user">Choose users:</label>
+                            <select [(ngModel)]="userContractor" name="userContractor" class="btn-group dropdown-menu float-right" autocomplete="userContractor" required>
+                                <option *ngFor="let user of Users" name="user" [ngValue]="userContractor">
+                                    {{user.firstName}}
+                                </option>
+                            </select>
+                        </div>
+                        <button (click)="updateTask()" type="button" class="btn btn-block btn-success">Change</button>
+                    </form>
+                </div>
             </div>
             <div class="text-center">
                     <!-- <button (click)="onSumbit()" type="button" class="btn btn-primary mb-3">SUMBIT Steps</button> -->

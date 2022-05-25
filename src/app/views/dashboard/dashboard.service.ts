@@ -53,10 +53,10 @@ export class DashboardService {
         )
     }
 
-    deleteDepartment(departmentId){
-        console.log({departmentId})
-        return this.http.post(this.departUrl + 'department/delete/' + departmentId, this.httpOptions)
-    }
+    // deleteDepartment(departmentId){
+    //     console.log({departmentId})
+    //     return this.http.post(this.departUrl + 'department/delete/' + departmentId, this.httpOptions)
+    // }
 
     changeDepartmentName(departmentId, newName){
         console.log({departmentId, newName})

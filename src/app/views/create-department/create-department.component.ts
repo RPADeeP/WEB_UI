@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CreateDepartmentService} from './create-department.service';
-import { createdDepartmentData } from './create-department.model';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Serv } from '../services.service';
+import { createdDepartmentData } from '../model';
 import {Router} from '@angular/router';
 
 @Component({
@@ -12,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class CreateDepartmentComponent implements OnInit {
 
-  constructor(private http: HttpClient, private createDepartmentService: CreateDepartmentService, private router:Router, public fb: FormBuilder) { }
+  constructor(private http: HttpClient, private serv: Serv, private router:Router) { }
   
   departmentName: createdDepartmentData;
   
@@ -24,7 +23,7 @@ export class CreateDepartmentComponent implements OnInit {
   createDep() {
     console.log(this.departmentName)
     console.log(localStorage.getItem('companyToken'))
-    this.createDepartmentService.createDep(this.departmentName, localStorage.getItem('companyToken')).subscribe(
+    this.serv.createDep(this.departmentName, localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.router.navigate(['/dashboard']);
       }

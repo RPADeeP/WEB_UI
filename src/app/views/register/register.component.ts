@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RegisterService } from './register.service';
+import { Serv } from '../services.service';
 import { registerUserData } from '../model';
 import {Router} from '@angular/router';
 
@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private http: HttpClient, private registerService: RegisterService, private router:Router) { }
+  constructor(private http: HttpClient, private serv: Serv, private router:Router) { }
 
   firstName: registerUserData;
   middleName: registerUserData;
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     console.log(this.firstName, this.middleName, this.lastName, this.password, this.companyToken, this.companyName)
-    this.registerService.register(this.firstName, this.middleName, this.lastName, this.password, this.companyToken, 
+    this.serv.register(this.firstName, this.middleName, this.lastName, this.password, this.companyToken, 
       this.companyName).subscribe(
       (data: any) => { 
         this.returnedData=data; 

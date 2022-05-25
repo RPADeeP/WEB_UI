@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DepartmentsData, user } from './dashboard.model';
+import { DepartmentsData, User } from '../model';
 import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router';
-import { DashboardService } from './dashboard.service'
+import { Serv } from '../services.service';
 import { DefaultLayoutComponent } from 'src/app/containers';
 
 @Component({
@@ -12,12 +12,12 @@ import { DefaultLayoutComponent } from 'src/app/containers';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private http: HttpClient, private DashboardService: DashboardService, private router:Router, private def: DefaultLayoutComponent){}
+  constructor(private http: HttpClient, private serv: Serv, private router:Router, private def: DefaultLayoutComponent){}
 
   companyToken: string;
   jwtToken: string;
 
-  Users: user[] = [
+  Users: User[] = [
     {
       firstName:"Someone", 
       lastName:"Some", 
@@ -107,21 +107,14 @@ export class DashboardComponent implements OnInit {
     else{
       alert('You dont have permission')
     }
-
-    //hide all depatment blocks
-    
-    
-    // document.getElementById("departElem" + ind).classList.toggle("hide");
-    // document.getElementById("iconDrodown" + ind).classList.toggle("cil-chevron-top");
-    // document.getElementById("iconDrodown" + ind).classList.toggle("cil-chevron-bottom");
   }
 
 
-  returnedUser: user;
+  returnedUser: User;
   addUserDeparts(name,usersId, departmentId){
     // this.returnedUser =  users;
     console.log(name, usersId, departmentId);
-    this.DashboardService.addUserToDepartment(name,usersId, departmentId).subscribe(
+    this.serv.addUserToDepartment(name,usersId, departmentId).subscribe(
       () => {
         window.location.reload();
       }
@@ -129,14 +122,14 @@ export class DashboardComponent implements OnInit {
     
   }
   deleteUserFromDepartment(usersId){
-    this.DashboardService.deleteUserFromDepartment(usersId).subscribe(
+    this.serv.deleteUserFromDepartment(usersId).subscribe(
       () => {
         window.location.reload();
       }
     );
   }
   deleteDepartment(departmentId){
-    this.DashboardService.deleteDepartment(departmentId).subscribe(
+    this.serv.deleteDepartment(departmentId).subscribe(
       () => {
         window.location.reload();
       }
@@ -144,7 +137,7 @@ export class DashboardComponent implements OnInit {
   }
   newName: string;
   changeDepartmentName(departmentId){
-    this.DashboardService.changeDepartmentName(departmentId, this.newName).subscribe(
+    this.serv.changeDepartmentName(departmentId, this.newName).subscribe(
       () => {
         window.location.reload();
       }
@@ -155,23 +148,17 @@ export class DashboardComponent implements OnInit {
     this.companyToken = localStorage.getItem('companyToken');
     this.jwtToken = localStorage.getItem('jwtToken')
 
-    this.DashboardService.getAllDeparts(localStorage.getItem('companyToken')).subscribe(
+    this.serv.getAllDeparts(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Departments=data; 
         console.log(this.Departments);
       }
     )
-    this.DashboardService.getAllUsersWithoutDepart(localStorage.getItem('companyToken')).subscribe(
+    this.serv.getAllUsersWithoutDepart(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Users=data; 
         console.log(this.Users);
       }
     )
-    // generate random values for mainChart
-    // for (let i = 0; i <= this.mainChartElements; i++) {
-    //   this.mainChartData1.push(this.random(50, 200));
-    //   this.mainChartData2.push(this.random(80, 100));
-    //   this.mainChartData3.push(65);
-    // }
   }
 }

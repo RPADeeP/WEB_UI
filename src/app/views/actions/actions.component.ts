@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Actions } from './actions.model';
+import { Actions } from '../model';
 import { HttpClient } from '@angular/common/http';
-import { ActionsService } from './actions.service'
+import { Serv } from '../services.service';
 
 @Component({
   selector: 'app-actions',
@@ -10,7 +10,7 @@ import { ActionsService } from './actions.service'
 })
 export class ActionsComponent implements OnInit {
 
-  constructor(private http: HttpClient, private ActionsService: ActionsService){}
+  constructor(private http: HttpClient, private serv: Serv){}
 
   Actions: Actions[] = [
     {
@@ -82,7 +82,7 @@ export class ActionsComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.ActionsService.getAllActions(localStorage.getItem('companyToken')).subscribe(
+    this.serv.getAllActions(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Actions=data; 
         console.log(this.Actions);

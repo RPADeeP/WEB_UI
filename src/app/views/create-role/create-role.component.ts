@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CreateRoleService} from './create-role.service';
-import { createdRoleData} from './create-role.model';
-import { AnyForUntypedForms, FormBuilder, Validators } from '@angular/forms';
 import { Serv } from '../services.service';
+import { createdRoleData} from '../model';
 
 
 @Component({
@@ -13,7 +11,7 @@ import { Serv } from '../services.service';
 })
 export class CreateRoleComponent implements OnInit {
 
-  constructor(private http: HttpClient, private CreateRoleService: CreateRoleService, private serv: Serv) { }
+  constructor(private http: HttpClient, private serv: Serv) { }
 
   roleName: createdRoleData;
   isGeneralStatisticAvailable: createdRoleData;
@@ -27,7 +25,7 @@ export class CreateRoleComponent implements OnInit {
   returnedData: any;
   ngOnInit(): void {
     this.companyToken = localStorage.getItem('companyToken');
-    this.CreateRoleService.getAllRoles(localStorage.getItem('companyToken')).subscribe(
+    this.serv.getAllRoles(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Role=data; 
         console.log(this.Role);
@@ -54,10 +52,8 @@ export class CreateRoleComponent implements OnInit {
       this.isJiraAvailable, 
       this.isAddingStaffAvailable,
       this.companyToken)
-
-      //this.Role.push({this.roleName, this.isGeneralStatisticAvailable, ....}) //TODO Maybe Role.push put into subscribe
       
-      this.CreateRoleService.createRole(
+      this.serv.createRole(
         this.roleName, 
         this.isGeneralStatisticAvailable, 
         this.isProcessCreatorAvailable, 
