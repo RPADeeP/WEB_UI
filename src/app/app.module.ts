@@ -53,6 +53,7 @@ import { ChartsModule } from 'ng2-charts';
 import { BPMComponent } from './views/bpm/bpm.component';
 
 import { Interceptor } from './interceptor';
+import { UserPageComponent } from './views/user-page/user-page.component';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { Interceptor } from './interceptor';
     DepartmentsComponent,
     BPMComponent,
     ActionsComponent,
+    UserPageComponent,
     
   ],
   providers: [
