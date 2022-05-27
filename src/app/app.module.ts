@@ -25,7 +25,6 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { LoginService } from './views/login/login.service';
 import { RegisterComponent } from './views/register/register.component';
-import { DepartmentsComponent } from './views/departments/departments.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -78,8 +77,7 @@ import { Interceptor } from './interceptor';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent,
-    DepartmentsComponent
+    RegisterComponent
   ],
   providers: [
     LoginService,

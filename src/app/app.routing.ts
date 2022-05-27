@@ -9,7 +9,6 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { CreateDepartmentComponent } from './views/create-department/create-department.component';
-import { DepartmentsComponent } from './views/departments/departments.component';
 import { CreateRoleComponent } from './views/create-role/create-role.component';
 import { BPMComponent } from './views/bpm/bpm.component';
 import { UsersComponent } from './views/users/users.component';
@@ -49,13 +48,6 @@ export const routes: Routes = [
     component: RegisterComponent,
     data: {
       title: 'Register Page'
-    }
-  },
-  {
-    path: 'departments',
-    component: DepartmentsComponent,
-    data: {
-      title: 'Departments Page'
     }
   },
   {

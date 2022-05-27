@@ -7,7 +7,7 @@ export const navItems: INavData[] = [
     icon: 'icon-speedometer',
     
   },
- 
+
   {
     name: 'Charts',
     url: '/charts',
@@ -60,11 +60,6 @@ export const navItems: INavData[] = [
       {
         name: 'Create department',
         url: '/create-department',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Departments',
-        url: '/departments',
         icon: 'icon-star'
       },
       {
