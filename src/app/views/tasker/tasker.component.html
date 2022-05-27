@@ -1,9 +1,10 @@
 <div class="app-body">
     <main class="main d-flex align-items-center">
-        <div class="container" style="border: 1px solid black; min-width: 100%;">
-            <div class="row inblock">
+        <div class="container" style="min-width: 100%;">
+            <div id="shadow" class="row inblock">
                 <div class="card col-md-6 col-lg-3 m-2">
                     <div class="text-value text-center">TO DO</div>
+                    <button (click)="hideCreate()" type="button" class="btn btn-block btn-primary mb-2">Create</button>
                     <div *ngFor="let task of Tasks">
                         <div *ngIf="(task.status === 'TODO')" class="card">
                             <div class="card-body p-4">
@@ -16,12 +17,9 @@
                                 <button *ngIf="(task.userApplicant.code === userApplicant.code)" (click)="hideUpdate(task.name, task.description, task.status, task.userContractor, task.id)" type="button" class="btn btn-block btn-primary">Change</button>
                             </div>
                         </div>
-                        <ng-template  #change>
-                            
-                        </ng-template>
                     </div>
                 </div>
-                <div class="card col-md-6 col-lg-3 m-2">
+                <div id="shadow2" class="card col-md-6 col-lg-3 m-2">
                     <div class="text-value text-center">IN PROGRESS</div>
                     <div *ngFor="let task of Tasks">
                         <div *ngIf="(task.status === 'IN_PROGRESS')" class="card">
@@ -63,8 +61,14 @@
                 </div>
                 
             </div>
-            <div class="card col-md-6 col-lg-3">
+            <div id="taskerToDash" class="text-center">
+                <a class="" [routerLink]="['/dashboard']"><i class="fa fa-long-arrow-left"></i> Back to main page</a>
+            </div>
+            <div class="card col-md-6 col-lg-3 hide" id="createTask">
                 <div class="card-body p-4">
+                        <button (click)="hideCreate()" type="button" class="btn float-right p-0">
+                          <i class="fa fa-close fa-lg"></i>
+                        </button>
                     <form>
                         <h1 class="text-center">Create task</h1>
                         <p class="text-center">Create new task</p>
@@ -91,9 +95,15 @@
                         <button (click)="createTask()" type="button" class="btn btn-block btn-success">Create</button>
                     </form>
                 </div >
+                <div class="text-center mb-2">
+                    <a class="" [routerLink]="['/dashboard']"><i class="fa fa-long-arrow-left"></i> Back to main page</a>
+                </div>
             </div>
             <div class="card hide" id="updateTask">
                 <div class="card-body p-4">
+                    <button (click)="hideUpdate('', '', '', userContractor, '')" type="button" class="btn float-right p-0">
+                        <i class="fa fa-close fa-lg"></i>
+                    </button>
                     <form>
                         <h1 class="text-center">Change task</h1>
                         Task name
@@ -130,11 +140,10 @@
                         <button (click)="updateTask()" type="button" class="btn btn-block btn-success">Change</button>
                     </form>
                 </div>
-            </div>
-            <div class="text-center">
-                    <!-- <button (click)="onSumbit()" type="button" class="btn btn-primary mb-3">SUMBIT Steps</button> -->
+                <div class="text-center mb-2">
                     <a class="" [routerLink]="['/dashboard']"><i class="fa fa-long-arrow-left"></i> Back to main page</a>
                 </div>
+            </div>
         </div>
     </main>
 </div>

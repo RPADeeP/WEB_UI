@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserData, role } from './users.model';
 import { HttpClient } from '@angular/common/http';
 import { Serv } from '../services.service';
+import { DefaultLayoutComponent } from 'src/app/containers';
 
 @Component({
   selector: 'app-users',
@@ -10,7 +11,7 @@ import { Serv } from '../services.service';
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private http: HttpClient, private serv: Serv){}
+  constructor(private http: HttpClient, private serv: Serv, private def: DefaultLayoutComponent){}
 
   companyToken: string;
 
@@ -90,6 +91,7 @@ export class UsersComponent implements OnInit {
 
   userId: any;
   togleHideAndShadow(userId){
+    // this.def.shade();
     document.getElementById("shadow").classList.toggle("bg-shade")
     document.getElementById("changeRole").classList.toggle("hide")
     this.userId = userId;

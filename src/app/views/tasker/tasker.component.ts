@@ -99,11 +99,21 @@ export class TaskerComponent implements OnInit {
 
   hideUpdate(name, description, status, userContractor, id){
     document.getElementById("updateTask").classList.toggle("hide");
+    document.getElementById("taskerToDash").classList.toggle("hide");
+    document.getElementById("shadow").classList.toggle("hide");
+    document.getElementById("shadow").classList.toggle("inblock");
     this.taskName = name;
     this.status = status;
     this.description = description;
     this.userContractor = userContractor;
     this.id = id
+  }
+
+  hideCreate(){
+    document.getElementById("createTask").classList.toggle("hide");
+    document.getElementById("taskerToDash").classList.toggle("hide");
+    document.getElementById("shadow").classList.toggle("hide");
+    document.getElementById("shadow").classList.toggle("inblock");
   }
 
   updateTask(){
