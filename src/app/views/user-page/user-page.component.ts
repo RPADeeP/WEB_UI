@@ -36,6 +36,10 @@ export class UserPageComponent implements OnInit {
     }
   };
 
+  logout(){
+    this.serv.logout;
+  }
+  
   Tasks: Task[];
 
   ngOnInit(): void {
