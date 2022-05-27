@@ -28,6 +28,10 @@ export class TaskerComponent implements OnInit {
       isJiraAvailable: true,
       name: "NewRole3",
       isProcessCreatorAvailable: true
+    },
+    department:{
+      id: "628ba9f94551d02fd2e33789",
+      name: "Sosunki"
     }
   }
 
@@ -86,7 +90,11 @@ export class TaskerComponent implements OnInit {
   Users: User[];
   
   createTask(){
-    this.serv.ceateTask(this.taskName, this.description, this.userApplicant, this.userContractor, "TODO", this.companyToken).subscribe();
+    this.serv.ceateTask(this.taskName, this.description, this.userApplicant, this.userContractor, "TODO", this.companyToken).subscribe(
+      () => {
+        window.location.reload();
+      }
+    );
   }
 
   changeStatus(name, description, userContractor, status, id){
@@ -125,8 +133,9 @@ export class TaskerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.def.User.role.isJiraAvailable){
-
+    // if(this.def.User.role.isJiraAvailable){
+      // console.log(this.def.User.role.isJiraAvailable)
+      // this.def.User.role.isJiraAvailable=this.userApplicant.role.isJiraAvailable;
       this.companyToken = localStorage.getItem('companyToken');
       this.serv.getCurrentUser().subscribe(
         (data: any) => { 
@@ -146,10 +155,10 @@ export class TaskerComponent implements OnInit {
           console.log(this.Users);
         }
       )
-    }
-    else{
-      this.router.navigate(['/dashboard']);
-    }
+    // }
+    // else{
+    //   this.router.navigate(['/dashboard']);
+    // }
   }
 
 }

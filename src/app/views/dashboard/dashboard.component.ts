@@ -35,6 +35,10 @@ export class DashboardComponent implements OnInit {
         companyToken:"",
         id: ""
       },
+      department:{
+        id: "628ba9f94551d02fd2e33789",
+        name: "Sosunki"
+      }
     },
     {
       firstName:"asdfasdf", 
@@ -53,6 +57,10 @@ export class DashboardComponent implements OnInit {
         companyToken:"",
         id: ""
       },
+      department:{
+        id: "628ba9f94551d02fd2e33789",
+        name: "Sosunki"
+      }
     },
     {
       firstName:"adsfasf", 
@@ -70,6 +78,10 @@ export class DashboardComponent implements OnInit {
         isAddingStaffAvailable:true,
         companyToken:"",
         id: ""
+      },
+      department:{
+        id: "628ba9f94551d02fd2e33789",
+        name: "Sosunki"
       }
     },
   ];

@@ -22,7 +22,11 @@ export class DefaultLayoutComponent {
     id:"",
     companyToken:"",
     code:null,
-    role:null
+    role:null,
+    department:{
+      id: "",
+      name: ""
+    }
   };
   ngOnInit(): void {
 
