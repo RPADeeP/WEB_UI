@@ -4,7 +4,7 @@
             <div id="shadow" class="row inblock">
                 <div class="card col-md-6 col-lg-3 m-2">
                     <div class="text-value text-center">TO DO</div>
-                    <button (click)="hideCreate()" type="button" class="btn btn-block btn-primary mb-2">Create</button>
+                    <button *ngIf="userApplicant.role.isJiraAvailable" (click)="hideCreate()" type="button" class="btn btn-block btn-primary mb-2">Create</button>
                     <div *ngFor="let task of Tasks">
                         <div *ngIf="(task.status === 'TODO')" class="card">
                             <div class="card-body p-4">
@@ -13,7 +13,7 @@
                                     <div>{{task.description}}</div>
                                     <div>{{task.status}}</div>
                                 </div>
-                                <button (click)="changeStatus(task.name, task.description, task.userContractor, 'IN_PROGRESS', task.id)" type="button" class="btn btn-block btn-primary">Take</button>
+                                <button *ngIf="(task.userContractor.code === userApplicant.code)" (click)="changeStatus(task.name, task.description, task.userContractor, 'IN_PROGRESS', task.id)" type="button" class="btn btn-block btn-primary">Take <i class="fa fa-arrow-right"></i></button>
                                 <button *ngIf="(task.userApplicant.code === userApplicant.code)" (click)="hideUpdate(task.name, task.description, task.status, task.userContractor, task.id)" type="button" class="btn btn-block btn-primary">Change</button>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                                     <div>{{task.userContractor}}</div> -->
                                     <div>{{task.status}}</div>
                                 </div>
-                                <div class="input-group mb-2">
+                                <div *ngIf="(task.userContractor.code === userApplicant.code)" class="input-group mb-2">
                                     
                                     <button (click)="changeStatus(task.name, task.description, task.userContractor, 'TODO', task.id)" type="button" class="btn btn-l btn-primary"><i class="fa fa-arrow-left"></i> TO DO</button>
                                     <button (click)="changeStatus(task.name, task.description, task.userContractor, 'DONE', task.id)" type="button" class="btn btn-r btn-primary">DONE <i class="fa fa-arrow-right"></i></button>
@@ -53,7 +53,7 @@
                                     <div>{{task.userContractor}}</div> -->
                                     <div>{{task.status}}</div>
                                 </div>
-                                <button (click)="changeStatus(task.name, task.description, task.userContractor, 'IN_PROGRESS', task.id)" type="button" class="btn btn-block btn-primary">IN PROGRESS</button>
+                                <button *ngIf="(task.userContractor.code === userApplicant.code)" (click)="changeStatus(task.name, task.description, task.userContractor, 'IN_PROGRESS', task.id)" type="button" class="btn btn-block btn-primary"><i class="fa fa-arrow-left"></i> IN PROGRESS</button>
                                 <button *ngIf="(task.userApplicant.code === userApplicant.code)" (click)="hideUpdate(task.name, task.description, task.status, task.userContractor, task.id)" type="button" class="btn btn-block btn-primary">Change</button>
                             </div>
                         </div>

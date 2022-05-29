@@ -24,6 +24,10 @@ export class User {
 	id: string;
 	code: number;
 	role: Role;
+    department: {
+        id: string;
+        name: string;
+    }
 }
 /*----------User----------*/
 

@@ -18,12 +18,6 @@ export const navItems: INavData[] = [
     icon: 'icon-user'
   },
   {
-    name: 'User',
-    url: '/user-page',
-    icon: ''
-  },
-
-  {
     name: 'Special',
     url: '/pages',
     icon: 'icon-star',

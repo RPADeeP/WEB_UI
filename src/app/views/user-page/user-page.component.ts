@@ -29,9 +29,17 @@ export class UserPageComponent implements OnInit {
       isJiraAvailable: true,
       name: "NewRole3",
       isProcessCreatorAvailable: true
+    },
+    department:{
+      id: "628ba9f94551d02fd2e33789",
+      name: "Sosunki"
     }
   };
 
+  logout(){
+    this.serv.logout;
+  }
+  
   Tasks: Task[];
 
   ngOnInit(): void {
