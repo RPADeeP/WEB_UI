@@ -1,10 +1,43 @@
 import { Component } from '@angular/core';
-
+import * as XLSX from 'xlsx';
 @Component({
   templateUrl: 'chartjs.component.html'
 })
 export class ChartJSComponent {
 
+  title = 'read-excel-in-angular8';
+  storeData: any;
+  csvData: any;
+  jsonData: any;
+  textData: any;
+  htmlData: any;
+  fileUploaded: File;
+  worksheet: any;
+  uploadedFile(event) {
+    this.fileUploaded = event.target.files[0];
+    this.readExcel();
+  }
+  readExcel() {
+    let readFile = new FileReader();
+    readFile.onload = (e) => {
+      this.storeData = readFile.result;
+      var data = new Uint8Array(this.storeData);
+      var arr = new Array();
+      for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+      var bstr = arr.join("");
+      var workbook = XLSX.read(bstr, { type: "binary" });
+      var first_sheet_name = workbook.SheetNames[0];
+      this.worksheet = workbook.Sheets[first_sheet_name];
+    }
+    readFile.readAsArrayBuffer(this.fileUploaded);
+  }
+  readAsJson() {
+    this.jsonData = XLSX.utils.sheet_to_json(this.worksheet, { raw: false });
+    this.jsonData = JSON.stringify(this.jsonData);
+
+  console.log(this.jsonData);
+  }
+/*
   // lineChart
   public lineChartData: Array<any> = [
     {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
@@ -93,5 +126,5 @@ export class ChartJSComponent {
   public chartHovered(e: any): void {
     console.log(e);
   }
-
+*/
 }
