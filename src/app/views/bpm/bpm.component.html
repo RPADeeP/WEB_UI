@@ -1,78 +1,83 @@
-<div class="app-body">
-    <main class="main d-flex align-items-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 mx-auto">
-            <div *ngFor="let item of counter" class="card mx-4 mt-4">
-                <div class="card-body p-4">
-                    <div class="text-value mb-4">Step {{ item }}</div>
-                    <div class="mb-2">
-                        <label for="departaments">Choose department:</label>
-                        <select [(ngModel)]="choosenDapartment" class="btn-group dropdown-menu float-right" id="departaments" (click)="log()">
-                            <option *ngFor="let depart of Departments" [ngValue]="depart" name="departament">
-                                {{depart.name}}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="mb-2" *ngIf="choosenDapartment">
-                        <label for="user">Choose user:</label>
-                        <select [(ngModel)]="userContractor" name="userContractor" class="btn-group dropdown-menu float-right" id="user">
-                            <option *ngFor="let user of choosenDapartment.users" [ngValue]="user.id">
-                                {{user.firstName}}  {{user.lastName}}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="icon-user"></i></span>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card pb-4">
+            <h1 class="text-center">Create action</h1>
+            <div class="card-body pb-0 inblock">
+                <input [(ngModel)]="actionName" name="actionName" type="text" class="form-control col-lg-4 text-center" placeholder="Action name" required>
+            </div>
+            
+            <div class="card-body p-4 inblock">
+                <div *ngFor="let item of counter" class="inblock">
+                    <div class="inblock p-2" *ngIf="item > 0"><i class="fa fa-long-arrow-right" style="font-size: 40px;"></i></div>
+                    <div class="card mb-0">
+                        <div class="card-body p-4">
+                            <button (click)="onDelete(item)" type="button" class="btn float-right p-0">
+                                <i class="fa fa-close fa-lg"></i>
+                            </button>
+                            <div class="text-value mb-4">Step {{ item+1 }}</div>
+                            <div class="mb-2">
+                                <label for="departaments">Choose department:</label>
+                                <select [(ngModel)]="choosenDapartment" class="btn-group dropdown-menu float-right ml-2" id="departaments" (click)="log()">
+                                    <option *ngFor="let depart of Departments" [ngValue]="depart" name="departament">
+                                        {{depart.name}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="mb-2" *ngIf="choosenDapartment">
+                                <label for="user">Choose user: </label>
+                                <select [(ngModel)]="userContractor" name="userContractor" class="btn-group dropdown-menu float-right md-2" id="user">
+                                    <option *ngFor="let user of choosenDapartment.users" [ngValue]="user.id">
+                                        {{user.firstName}}  {{user.lastName}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-user"></i></span>
+                                </div>
+                                <input [(ngModel)]="descriptionField" name="descriptionField" type="text" class="form-control" placeholder="Description" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-user"></i></span>
+                                </div>
+                                <input [(ngModel)]="decimalFields" name="decimalFields" type="text" class="form-control" placeholder="decimalFields" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-user"></i></span>
+                                </div>
+                                <input [(ngModel)]="stringFields" name="stringFields" type="text" class="form-control" placeholder="stringFields" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-user"></i></span>
+                                </div>
+                                <input [(ngModel)]="dateField" name="dateField" type="text" class="form-control" placeholder="dateField" required>
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-user"></i></span>
+                                </div>
+                                <input [(ngModel)]="dropDownChoiceField" name="dropDownChoiceField" type="text" class="form-control" placeholder="dropDownChoiceField" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="icon-user"></i></span>
+                                </div>
+                                <input [(ngModel)]="status" name="status" type="text" class="form-control" placeholder="status" required>
+                            </div>
+                            <button (click)="onSave()" type="button" class="btn btn-block btn-primary">SAVE Step</button>
                         </div>
-                        <input [(ngModel)]="descriptionField" name="descriptionField" type="text" class="form-control" placeholder="Description" required>
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="icon-user"></i></span>
-                        </div>
-                        <input [(ngModel)]="decimalFields" name="decimalFields" type="text" class="form-control" placeholder="decimalFields" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="icon-user"></i></span>
-                        </div>
-                        <input [(ngModel)]="stringFields" name="stringFields" type="text" class="form-control" placeholder="stringFields" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="icon-user"></i></span>
-                        </div>
-                        <input [(ngModel)]="dateField" name="dateField" type="text" class="form-control" placeholder="dateField" required>
-                    </div>
-                    
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="icon-user"></i></span>
-                        </div>
-                        <input [(ngModel)]="dropDownChoiceField" name="dropDownChoiceField" type="text" class="form-control" placeholder="dropDownChoiceField" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="icon-user"></i></span>
-                        </div>
-                        <input [(ngModel)]="status" name="status" type="text" class="form-control" placeholder="status" required>
-                    </div>
-                    <button (click)="onSave()" type="button" class="btn btn-block btn-primary">SAVE Step</button>
                 </div>
             </div>
-            <div class="card mx-4 card-body text-center">
+            <div class="card-body text-center">
                 <button (click)="onSumbit()" type="button" class="btn btn-primary mb-3">SUMBIT Steps</button>
+                <br>
                 <a class="" [routerLink]="['/dashboard']"><i class="fa fa-long-arrow-left"></i> Back to main page</a>
             </div>
         </div>
-      </div>
-     </div>
-    </main>
-</div>
-<main class="main d-flex align-items-center">
-    <div class="container">
-        
     </div>
-</main>
+</div>

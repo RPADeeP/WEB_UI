@@ -57,10 +57,10 @@
                 <div class="m-4" style="border-top: 2px solid gray;">
                     <h1 class="text-center">Your tasks</h1>
                     <div class="text-value">TODO or IN PROGRESS</div>
-                    <div class="card-body p-4">
+                    <div class="card-body pl-0">
                         <div class="inblock">
                             <div *ngFor="let task of Tasks" class="">
-                                <div *ngIf="(task.userContractor.id === User.id) && (task.status !== 'DONE')" class="card m-2">
+                                <div *ngIf="(task.userContractor.id === User.id) && (task.status !== 'DONE')" class="card mr-3">
                                     <div class="card-body p-4">
                                         <div>
                                             <div class="text-value">{{task.name}}</div>
@@ -73,10 +73,10 @@
                         </div>
                     </div>
                     <div class="text-value">DONE</div>
-                    <div class="card-body p-4">
+                    <div class="card-body pl-0">
                         <div class="inblock">
                             <div *ngFor="let task of Tasks" class="">
-                                <div *ngIf="(task.userContractor.id === User.id) && (task.status === 'DONE')" class="card m-2">
+                                <div *ngIf="(task.userContractor.id === User.id) && (task.status === 'DONE')" class="card mr-3">
                                     <div class="card-body p-4">
                                         <div>
                                             <div class="text-value">{{task.name}}</div>

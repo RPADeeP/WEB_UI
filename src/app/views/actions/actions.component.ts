@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Actions } from '../model';
+import { Actions, User } from '../model';
 import { HttpClient } from '@angular/common/http';
 import { Serv } from '../services.service';
 
@@ -27,10 +27,7 @@ export class ActionsComponent implements OnInit {
           descriptionField: "Tryer",
           dateField: "2012-04-23T18:25:43.511+00:00",
           dropDownChoiceField: "ok",
-          userContractor: {
-            timestamp: 1652812120,
-            date: "2022-05-17T18:28:40.000+00:00"
-          },
+          userContractor: "f6a4sdf6a84dsf6a8d4a5fz68s",
           status: "work"
         }
       ],
@@ -52,10 +49,7 @@ export class ActionsComponent implements OnInit {
           descriptionField: "1",
           dateField: "2012-04-23T18:25:43.511+00:00",
           dropDownChoiceField: "1",
-          userContractor: {
-            timestamp: 1652812120,
-            date: "2022-05-17T18:28:40.000+00:00"
-          },
+          userContractor: "9a28f49a6sd92as4d8f64as92s98dg1",
           status: "1"
         },
         {
@@ -68,10 +62,7 @@ export class ActionsComponent implements OnInit {
           descriptionField: "2",
           dateField: "2012-04-23T18:25:43.511+00:00",
           dropDownChoiceField: "2",
-          userContractor: {
-            timestamp: 1652812120,
-            date: "2022-05-17T18:28:40.000+00:00"
-          },
+          userContractor: "9s8d2fv9s2f9s7f2sdf898s2fd7",
           status: "2"
         },
       ],
@@ -81,13 +72,21 @@ export class ActionsComponent implements OnInit {
     }
   ];
 
+  User: User;
+
   ngOnInit(): void {
     this.serv.getAllActions(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Actions=data; 
         console.log(this.Actions);
       }
-    )
+    );
+    // this.serv.getCurrentUser().subscribe(
+    //   (data: any) => { 
+    //     this.User=data;
+    //     console.log(this.User);
+    //   }
+    // );
   }
 
 }

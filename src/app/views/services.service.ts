@@ -171,9 +171,9 @@ export class Serv {
   }
 
   public deleteItem(steps, key){
-    const index = steps.indexOf(key, 0);
-    if (index > -1) {
-      steps.splice(index, 1);
+    console.log(key)
+    if (key > -1) {
+      steps.splice(key, 1);
     }
   }
 

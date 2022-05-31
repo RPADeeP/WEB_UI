@@ -55,26 +55,28 @@ export class BPMComponent implements OnInit {
 
   onSumbit(){
     console.log(this.steps);
-   this.serv.createAction(this.actionName, this.description, this.steps,this.statusAction, this.companyToken).subscribe();  
-   
+    this.serv.createAction(this.actionName, this.description, this.steps,this.statusAction, this.companyToken).subscribe();  
   }
 
-onSave(){
-  this.steps.push({
-    decimalFields : {number : this.decimalFields},
-    stringFields : {name : this.stringFields},
-    descriptionField : this.descriptionField,
-    userContractor: this.userContractor,
-    dateField: this.dateField,
-    dropDownChoiceField: this.dropDownChoiceField,
-    status: this.status
-  });
-  this.counter.push(this.i)
-  this.i++
-  console.log(this.steps);
-}
+  onSave(){
+    this.steps.push({
+      decimalFields : {number : this.decimalFields},
+      stringFields : {name : this.stringFields},
+      descriptionField : this.descriptionField,
+      userContractor: this.userContractor,
+      dateField: this.dateField,
+      dropDownChoiceField: this.dropDownChoiceField,
+      status: this.status
+    });
+    this.counter.push(this.i)
+    this.i++
+    console.log(this.steps);
+  }
 
   onDelete(key){
     this.serv.deleteItem(this.steps, key);
+    this.counter.pop()
+    this.i--
+    console.log(this.steps)
   };
 }
