@@ -1,4 +1,4 @@
-<div class="animated fadeIn">
+<!-- <div class="animated fadeIn">
   <div class="card-columns cols-2">
     <div class="card">
       <div class="card-header">
@@ -127,4 +127,14 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 form-group">
+      <input type="file" class="form-control" (change)="uploadedFile($event)" placeholder="Upload file" accept=".xlsx">
+    </div>
+  </div>
+    <div class="col-md-2 form-group">
+      <button type="button" class="btn btn-info" (click)="readAsJson()">Read as JSON</button>
+    </div>
+  </div>

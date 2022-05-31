@@ -8,13 +8,7 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-import { CreateDepartmentComponent } from './views/create-department/create-department.component';
-import { CreateRoleComponent } from './views/create-role/create-role.component';
-import { BPMComponent } from './views/bpm/bpm.component';
-import { UsersComponent } from './views/users/users.component';
-import { TaskerComponent } from './views/tasker/tasker.component';
-import { ActionsComponent } from './views/actions/actions.component';
-import { UserPageComponent } from './views/user-page/user-page.component';
+
 
 export const routes: Routes = [
   {
@@ -63,6 +57,7 @@ export const routes: Routes = [
         path: 'charts',
         loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
       },
+
       {
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
