@@ -72,7 +72,28 @@ export class ActionsComponent implements OnInit {
     }
   ];
 
-  User: User;
+  User: User = {
+    firstName: "Pavel",
+    lastName: "Pustovoitov",
+    middleName: "Sergeevich",
+    code: 871801,
+    companyToken: "6288dcf51b2ca30b4f3b0dbc",
+    id: "6288dcf2c787c126ef626b07",
+    role: 
+    {
+      isAddingStaffAvailable: false,
+      companyToken: "6288dcf51b2ca30b4f3b0dbc",
+      isGeneralStatisticAvailable: false,
+      id: "628a072e8fb0be048deb74de",
+      isJiraAvailable: true,
+      name: "NewRole3",
+      isProcessCreatorAvailable: true
+    },
+    department:{
+      id: "628ba9f94551d02fd2e33789",
+      name: "Sosunki"
+    }
+  };
 
   ngOnInit(): void {
     this.serv.getAllActions(localStorage.getItem('companyToken')).subscribe(
@@ -81,12 +102,12 @@ export class ActionsComponent implements OnInit {
         console.log(this.Actions);
       }
     );
-    // this.serv.getCurrentUser().subscribe(
-    //   (data: any) => { 
-    //     this.User=data;
-    //     console.log(this.User);
-    //   }
-    // );
+    this.serv.getCurrentUser().subscribe(
+      (data: any) => { 
+        this.User=data;
+        console.log(this.User);
+      }
+    );
   }
 
 }

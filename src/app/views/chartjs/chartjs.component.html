@@ -130,11 +130,18 @@
 </div> -->
 <div class="container">
   <div class="row">
-    <div class="col-md-8 form-group">
-      <input type="file" class="form-control" (change)="uploadedFile($event)" placeholder="Upload file" accept=".xlsx">
+    <div class="card">
+      <div class="card-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="icon-user"></i></span>
+          </div>
+          <input type="file" class="" (change)="uploadedFile($event)" placeholder="Upload file" accept=".xlsx">
+        </div>
+        <div class="form-group text-center">
+          <button type="button" class="btn btn-info" (click)="readAsJson()">Read XLSX as JSON</button>
+        </div>
+      </div>
     </div>
   </div>
-    <div class="col-md-2 form-group">
-      <button type="button" class="btn btn-info" (click)="readAsJson()">Read as JSON</button>
-    </div>
-  </div>
+</div>

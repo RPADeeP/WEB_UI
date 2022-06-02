@@ -71,6 +71,7 @@ export class BPMComponent implements OnInit {
     this.counter.push(this.i)
     this.i++
     console.log(this.steps);
+    console.log(this.counter);
   }
 
   onDelete(key){

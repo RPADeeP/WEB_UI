@@ -65,11 +65,6 @@ export const navItems: INavData[] = [
         icon: 'icon-star'
       },
       {
-        name: 'BPM',
-        url: '/bpm',
-        icon: 'icon-star'
-      },
-      {
         name: 'Tasker',
         url: '/tasker',
         icon: 'icon-star'

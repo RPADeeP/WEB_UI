@@ -9,7 +9,7 @@
             <div class="card-body p-4 inblock">
                 <div *ngFor="let item of counter" class="inblock">
                     <div class="inblock p-2" *ngIf="item > 0"><i class="fa fa-long-arrow-right" style="font-size: 40px;"></i></div>
-                    <div class="card mb-0">
+                    <div class="card m-2">
                         <div class="card-body p-4">
                             <button (click)="onDelete(item)" type="button" class="btn float-right p-0">
                                 <i class="fa fa-close fa-lg"></i>
@@ -68,7 +68,12 @@
                                 </div>
                                 <input [(ngModel)]="status" name="status" type="text" class="form-control" placeholder="status" required>
                             </div>
-                            <button (click)="onSave()" type="button" class="btn btn-block btn-primary">SAVE Step</button>
+                            <div *ngIf="item+1 === counter.length else disable">
+                                <button (click)="onSave()" type="button" class="btn btn-block btn-primary">SAVE Step</button>
+                            </div>
+                            <ng-template #disable>
+                                <button (click)="onSave()" type="button" class="btn btn-block btn-primary" disabled>SAVE Step</button>
+                            </ng-template>
                         </div>
                     </div>
                 </div>

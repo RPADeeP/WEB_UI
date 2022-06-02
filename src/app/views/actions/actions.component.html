@@ -12,7 +12,11 @@
             </div>
         </div>
     </div>
-    <div *ngIf="User.role.isProcessCreatorAvailable">
-        <button [routerLink]="['/bpm']" type="button" class="btn btn-primary mb-3">Create Action</button>
+    <div  class="card mx-4 mt-4 inblock">
+        <div class="card-body pb-4" style="width: 100%;">
+            <div *ngIf="User.role.isProcessCreatorAvailable" class="float-right">
+                <button [routerLink]="['/bpm']" type="button" class="btn btn-primary mb-3">Create Action</button>
+            </div>
+        </div>
     </div>
 </div>
