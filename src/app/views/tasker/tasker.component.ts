@@ -12,7 +12,7 @@ import { DefaultLayoutComponent } from 'src/app/containers';
 })
 export class TaskerComponent implements OnInit {
 
-  DefUser = {
+  DefUser: User = {
     firstName: "Pavel",
     lastName: "Pustovoitov",
     middleName: "Sergeevich",
@@ -87,7 +87,9 @@ export class TaskerComponent implements OnInit {
   status: string;
   id: string;
 
-  Users: User[];
+  Users: User[] = [
+    this.DefUser
+  ];
   
   createTask(){
     this.serv.ceateTask(this.taskName, this.description, this.userApplicant, this.userContractor, "TODO", this.companyToken).subscribe(

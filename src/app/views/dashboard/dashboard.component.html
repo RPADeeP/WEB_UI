@@ -22,18 +22,18 @@
               </button>
             </div>
             <div class="inblock">
-              <button type="button" class="btn badge-warning m-1" (click)="toggleDepartment(department.name)" style="width:100%">
-                Update
+              <button type="button" class="btn badge-warning m-1" (click)="changeName()" style="width:100%">
+                Change department name
               </button>
               <button type="button" class="btn delite m-1" (click)="deleteDepartment(department.id)" style="width:100%">
                 Delete
               </button>
             </div>
-            <div class="inblock">
+            <div id="changeName" class="hide">
               <div class="input-group m-1">
                 <input [(ngModel)]="newName" name="newName" type="text" class="form-control" placeholder="New department name" autocomplete="newName" required>
                 <div class="input-group-append">
-                  <button (click)="changeDepartmentName(department.id)" type="button" class="btn btn-block btn-success">Create</button>
+                  <button (click)="changeDepartmentName(department.id)" type="button" class="btn btn-block btn-success">Change</button>
                 </div>
               </div>
             </div>

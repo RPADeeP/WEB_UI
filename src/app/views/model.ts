@@ -76,7 +76,6 @@ export class Steps{
     descriptionField: any;
     userContractor: any;
     dateField: string;
-    dropDownChoiceField: any;
     status: any;
 }
 export class DecimalFields{

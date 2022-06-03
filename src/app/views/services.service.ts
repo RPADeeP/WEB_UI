@@ -162,7 +162,7 @@ export class Serv {
     return this.http.post(this.processUrl + 'bpm/create-action',
     {
       name,
-      description: "FIRST PROC action",
+      description,
       steps,
       status,
       companyToken
@@ -190,7 +190,9 @@ export class Serv {
     return this.http.get(this.taskerUrl + 'task/get-all/' +  companyToken,  this.httpOptions)
   }
 
-  public ceateTask(name: string, description: string, userApplicant: User, userContractor: User, status: string, companyToken: string){
+  public ceateTask(name: string, description: string, userApplicant: User, 
+    userContractor: User, status: string, companyToken: string){
+
     console.log({name,description,userApplicant,userContractor,status,companyToken})
     return this.http.post(this.taskerUrl + 'task/create', 
     {
@@ -204,7 +206,9 @@ export class Serv {
     this.httpOptions);
   }
 
-  public changeTask(name: string, status: string, userContractor: User, description: string, companyToken: string, id: string){
+  public changeTask(name: string, status: string, userContractor: User, 
+    description: string, companyToken: string, id: string){
+      
     console.log({name, status, userContractor, description, companyToken})
     return this.http.post(this.taskerUrl + 'task/change-status',
     {

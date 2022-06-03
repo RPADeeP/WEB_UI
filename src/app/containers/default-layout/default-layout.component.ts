@@ -16,16 +16,26 @@ export class DefaultLayoutComponent {
   
   companyToken: any;
   User: User = {
-    firstName: "",
-    lastName: "",
-    middleName: "",
-    id:"",
-    companyToken:"",
-    code:null,
-    role:null,
-    department:{
-      id: "",
-      name: ""
+    firstName:"Someone", 
+    lastName:"Some", 
+    middleName:"Somathing", 
+    companyToken: "6280ad6a8647ee27a6a8e37f", 
+    id: "", 
+    code:483532,
+    role: 
+    {
+        name:"admin",
+        isGeneralStatisticAvailable:true,
+        isProcessCreatorAvailable:true,
+        isJiraAvailable:true,
+        isAddingStaffAvailable:true,
+        companyToken:"",
+        id: ""
+    },
+    department:
+    {
+        id: "628ba9f94551d02fd2e33789",
+        name: "Sosunki"
     }
   };
   ngOnInit(): void {

@@ -121,6 +121,11 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  changeName(){
+    document.getElementById("changeName").classList.toggle("inblock");
+    document.getElementById("changeName").classList.toggle("hide");
+  }
+
 
   returnedUser: User;
   addUserDeparts(name,usersId, departmentId){

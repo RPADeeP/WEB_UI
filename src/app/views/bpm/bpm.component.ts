@@ -20,7 +20,6 @@ export class BPMComponent implements OnInit {
   userContractor: Steps;
   statusAction: any = "OK";
   status:any;
-  dropDownChoiceField:any;
   dateField:any;
   stringFields:any;
   decimalFields:any;
@@ -32,7 +31,6 @@ export class BPMComponent implements OnInit {
   descriptionFieldValues;
   userContractorValues;
   dataFieldValues;
-  dropDownChoiceFieldValues;
   statusValues;
 
 
@@ -55,7 +53,7 @@ export class BPMComponent implements OnInit {
 
   onSumbit(){
     console.log(this.steps);
-    this.serv.createAction(this.actionName, this.description, this.steps,this.statusAction, this.companyToken).subscribe();  
+    this.serv.createAction(this.actionName, this.description, this.steps, this.statusAction, this.companyToken).subscribe();  
   }
 
   onSave(){
@@ -65,13 +63,10 @@ export class BPMComponent implements OnInit {
       descriptionField : this.descriptionField,
       userContractor: this.userContractor,
       dateField: this.dateField,
-      dropDownChoiceField: this.dropDownChoiceField,
       status: this.status
     });
     this.counter.push(this.i)
     this.i++
-    console.log(this.steps);
-    console.log(this.counter);
   }
 
   onDelete(key){

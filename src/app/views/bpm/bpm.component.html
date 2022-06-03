@@ -60,14 +60,9 @@
                                 <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="icon-user"></i></span>
                                 </div>
-                                <input [(ngModel)]="dropDownChoiceField" name="dropDownChoiceField" type="text" class="form-control" placeholder="dropDownChoiceField" required>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="icon-user"></i></span>
-                                </div>
                                 <input [(ngModel)]="status" name="status" type="text" class="form-control" placeholder="status" required>
                             </div>
+                            
                             <div *ngIf="item+1 === counter.length else disable">
                                 <button (click)="onSave()" type="button" class="btn btn-block btn-primary">SAVE Step</button>
                             </div>
@@ -79,7 +74,7 @@
                 </div>
             </div>
             <div class="card-body text-center">
-                <button (click)="onSumbit()" type="button" class="btn btn-primary mb-3">SUMBIT Steps</button>
+                <button (click)="onSumbit()" type="button" class="btn btn-primary mb-3">SUMBIT</button>
                 <br>
                 <a class="" [routerLink]="['/dashboard']"><i class="fa fa-long-arrow-left"></i> Back to main page</a>
             </div>
