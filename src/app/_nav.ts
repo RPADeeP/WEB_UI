@@ -2,9 +2,9 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
-    name: 'Dashboard',
-    url: '/dashboard',
-    icon: 'icon-speedometer',
+    name: 'Departments',
+    url: '/departments',
+    icon: 'icon-briefcase',
     
   },
   {
@@ -15,70 +15,43 @@ export const navItems: INavData[] = [
   {
     name: 'Users',
     url: '/users',
-    icon: 'icon-user'
+    icon: 'icon-people'
   },
+  {
+    name: 'Actions',
+    url: '/actions',
+    icon: 'icon-docs'
+  },
+  {
+    name: 'BPM',
+    url: '/bpm',
+    icon: 'icon-doc'
+  },
+  {
+    name: 'Tasker',
+    url: '/tasker',
+    icon: 'icon-calendar'
+  },
+
+  {
+    divider: true
+  },
+
   {
     name: 'Special',
     url: '/pages',
     icon: 'icon-star',
     children: [
       {
-        name: 'Create roles',
-        url: '/create-role',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Actions',
-        url: '/actions',
-        icon: 'icon-star'
-      },
-    ]
-  },
-
-  {
-    divider: true
-  },
-  
-  {
-    name: 'Pages',
-    url: '/pages',
-    icon: 'icon-star',
-    children: [
-      {
-        name: 'Login',
-        url: '/login',
-        icon: 'icon-star'
-      },
-      {
         name: 'Create department',
         url: '/create-department',
         icon: 'icon-star'
       },
       {
-        name: 'Register',
-        url: '/register',
+        name: 'Create roles',
+        url: '/create-role',
         icon: 'icon-star'
       },
-      {
-        name: 'BPM',
-        url: '/bpm',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Tasker',
-        url: '/tasker',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Error 404',
-        url: '/404',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Error 500',
-        url: '/500',
-        icon: 'icon-star'
-      }
     ]
   },
   

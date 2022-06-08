@@ -62,37 +62,34 @@
                     </div>
                     <input [(ngModel)]="roleName" name="roleName" type="text" class="form-control" placeholder="Role name" autocomplete="roleName" required>
                   </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend align-items-center">
-                      <label>Is General Statistic Available:</label>
+                  <div class="">
+                    <div class="input-group mb-3 row">
+                      <div class="input-group-prepend align-items-center col">
+                        <label>Is General Statistic Available:</label>
+                      </div>
+                      <input type="checkbox" [(ngModel)]="isGeneralStatisticAvailable" name="isGeneralStatisticAvailable" class="form-control col" autocomplete="isGeneralStatisticAvailable" required/>
                     </div>
-                    <input type="checkbox" [(ngModel)]="isGeneralStatisticAvailable" name="isGeneralStatisticAvailable" class="form-control" autocomplete="isGeneralStatisticAvailable" required/>
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend align-items-center">
-                      <label>Is Process Creator Available:</label>
+                    <div class="input-group mb-3 row">
+                      <div class="input-group-prepend align-items-center col">
+                        <label>Is Process Creator Available:</label>
+                      </div>
+                      <input type="checkbox" [(ngModel)]="isProcessCreatorAvailable" name="isProcessCreatorAvailable" class="form-control col" autocomplete="isProcessCreatorAvailable" required/>
                     </div>
-                    <input type="checkbox" [(ngModel)]="isProcessCreatorAvailable" name="isProcessCreatorAvailable" class="form-control" autocomplete="isProcessCreatorAvailable" required/>
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend align-items-center">
-                      <label>Is Jira Available:</label>
+                    <div class="input-group mb-3 row">
+                      <div class="input-group-prepend align-items-center col">
+                        <label>Is Jira Available:</label>
+                      </div>
+                      <input type="checkbox" [(ngModel)]="isJiraAvailable" name="isJiraAvailable" class="form-control col" autocomplete="isJiraAvailable" required/>
                     </div>
-                    <input type="checkbox" [(ngModel)]="isJiraAvailable" name="isJiraAvailable" class="form-control" autocomplete="isJiraAvailable" required/>
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend align-items-center  ">
-                      <label>Is Adding Staff Available:</label>
+                    <div class="input-group mb-3 row">
+                      <div class="input-group-prepend align-items-center col">
+                        <label>Is Adding Staff Available:</label>
+                      </div>
+                      <input type="checkbox" [(ngModel)]="isAddingStaffAvailable" name="isAddingStaffAvailable" class="form-control col" autocomplete="isAddingStaffAvailable" required/>
                     </div>
-                    <input type="checkbox" [(ngModel)]="isAddingStaffAvailable" name="isAddingStaffAvailable" class="form-control" autocomplete="isAddingStaffAvailable" required/>
                   </div>
-  
                   <button (click)="createRole()" type="button" class="btn btn-block btn-success">Create</button>
                 </form>
-              </div >
-  
-              <div class="card-body text-center">
-                <a class="" [routerLink]="['/dashboard']"><i class="fa fa-long-arrow-left"></i> Back to main page</a>
               </div>
             </div>
           </div>

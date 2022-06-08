@@ -104,7 +104,7 @@
     </div>
   
     
-    <div id="createDepButt" class="col-sm-6 col-lg-3" style="min-height: 50%;">
+    <div *ngIf="User.role.isAddingStaffAvailable" id="createDepButt" class="col-sm-6 col-lg-3" style="min-height: 50%;">
       <div class="card text-white bg-info"> 
         <!-- class bg-info is background color -->
         <div class="card-body text-center">

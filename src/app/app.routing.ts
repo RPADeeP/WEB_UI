@@ -13,7 +13,7 @@ import { RegisterComponent } from './views/register/register.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'departments',
     pathMatch: 'full',
   },
   {
@@ -59,7 +59,7 @@ export const routes: Routes = [
       },
 
       {
-        path: 'dashboard',
+        path: 'departments',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {

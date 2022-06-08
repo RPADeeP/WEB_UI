@@ -15,14 +15,30 @@ export class Serv {
   taskerUrl = 'http://26.237.245.64:8083/';
 
   router : Router;
-  jwt = localStorage.getItem('jwtToken')    
+  
+  
+  jwt = localStorage.getItem('jwtToken')
   httpOptions = {
-      headers: new HttpHeaders().set('Authorization',  'Bearer ' + this.jwt)
+    headers: new HttpHeaders(
+        { 
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.jwt
+        }
+    )
   };
+  rewriteHttpOptions(){
+    this.jwt = localStorage.getItem('jwtToken')
+    this.httpOptions = {
+      headers: new HttpHeaders(
+          { 
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + this.jwt
+          }
+      )
+    };
+  }
 
   constructor(private http: HttpClient) { }
-
-  // http://26.237.245.64:8080/user/get-one/
 
   public createToken(token){
       return this.http.get(this.usersUrl  + 'user/add-token/'+  token)

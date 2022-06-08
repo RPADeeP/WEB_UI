@@ -17,6 +17,8 @@ export class DashboardComponent implements OnInit {
   companyToken: string;
   jwtToken: string;
 
+  User: User;
+
   Users: User[] = [
     {
       firstName:"Someone", 
@@ -102,8 +104,7 @@ export class DashboardComponent implements OnInit {
 
   toggleDepartment(ind){
 
-    if(this.def.User.role.isProcessCreatorAvailable){
-      console.log('Yes')
+    if(this.def.User.role.isAddingStaffAvailable){
       for (let index = 0; index < this.Departments.length; index++) {
         document.getElementById("departElem" + this.Departments[index].name).classList.toggle("hide");
       }
@@ -129,7 +130,6 @@ export class DashboardComponent implements OnInit {
 
   returnedUser: User;
   addUserDeparts(name,usersId, departmentId){
-    // this.returnedUser =  users;
     console.log(name, usersId, departmentId);
     this.serv.addUserToDepartment(name,usersId, departmentId).subscribe(
       () => {
@@ -164,7 +164,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.companyToken = localStorage.getItem('companyToken');
     this.jwtToken = localStorage.getItem('jwtToken')
-
+    this.User = this.def.User;
     this.serv.getAllDeparts(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Departments=data; 

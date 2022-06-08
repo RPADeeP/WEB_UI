@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: CreateRoleComponent,
     data: {
-      title: 'CreateRole'
+      title: 'Create Role'
     }
   }
 ];

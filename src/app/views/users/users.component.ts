@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserData, role } from './users.model';
+import { User, Role } from '../model';
 import { HttpClient } from '@angular/common/http';
 import { Serv } from '../services.service';
 import { DefaultLayoutComponent } from 'src/app/containers';
@@ -15,65 +15,86 @@ export class UsersComponent implements OnInit {
 
   companyToken: string;
 
-  Users: UserData[] = [
-    // {
-    //   firstName:"Someone", 
-    //   lastName:"Some", 
-    //   middleName:"Somathing", 
-    //   companyToken: "6280ad6a8647ee27a6a8e37f", 
-    //   id:
-    //   {
-    //     timestamp: 138578, 
-    //     date: "02-05-2000"
-    //   }, code:483532,
-    //   role: 
-    //   {
-    //     name:"admin",
-    //     isGeneralStatisticAvailable:true,
-    //     isProcessCreatorAvailable:true,
-    //     isJiraAvailable:true,
-    //     isAddingStaffAvailable:true,
-    //     companyToken:""
-    //   },
-    // },
-    // {
-    //   firstName:"asdfasdf", 
-    //   lastName:"asfdsafd", 
-    //   middleName:"adsfasdf", 
-    //   companyToken: "6280ad6a8647ee27a6a8e37f", 
-    //   id:
-    //   {
-    //     timestamp: 138578, 
-    //     date: "02-05-2000"
-    //   }, code:483532,
-    //   role: 
-    //   {
-    //     name:"asdfsdf",
-    //     isGeneralStatisticAvailable:true,
-    //     isProcessCreatorAvailable:true,
-    //     isJiraAvailable:true,
-    //     isAddingStaffAvailable:true,
-    //     companyToken:""
-    //   },
-    // },
-    // {
-    //   firstName:"adsfasf", 
-    //   lastName:"adfasfd", 
-    //   middleName:"adsfasdf", 
-    //   companyToken: "6280ad6a8647ee27a6a8e37f", 
-    //   id:
-    //   {
-    //     timestamp: 138578, 
-    //     date: "02-05-2000"
-    //   }, code:483532,
-    //   role: null,
-    // },
+  Users: User[] = [
+    {
+      firstName:"Someone", 
+      lastName:"Some", 
+      middleName:"Somathing", 
+      companyToken: "6280ad6a8647ee27a6a8e37f", 
+      id: "", 
+      code:483532,
+      role: 
+      {
+        name:"admin",
+        isGeneralStatisticAvailable:true,
+        isProcessCreatorAvailable:true,
+        isJiraAvailable:true,
+        isAddingStaffAvailable:true,
+        companyToken:"",
+        id: ""
+      },
+      department:{
+        id: "628ba9f94551d02fd2e33789",
+        name: "Sosunki"
+      }
+    },
+    {
+      firstName:"asdfasdf", 
+      lastName:"asfdsafd", 
+      middleName:"adsfasdf", 
+      companyToken: "6280ad6a8647ee27a6a8e37f", 
+      id: "",
+      code:483532,
+      role: 
+      {
+        name:"asdfsdf",
+        isGeneralStatisticAvailable:true,
+        isProcessCreatorAvailable:true,
+        isJiraAvailable:true,
+        isAddingStaffAvailable:true,
+        companyToken:"",
+        id: ""
+      },
+      department:{
+        id: "628ba9f94551d02fd2e33789",
+        name: "Sosunki"
+      }
+    },
+    {
+      firstName:"adsfasf", 
+      lastName:"adfasfd", 
+      middleName:"adsfasdf", 
+      companyToken: "6280ad6a8647ee27a6a8e37f", 
+      id: "", 
+      code:483532,
+      role: 
+      {
+        name:"default",
+        isGeneralStatisticAvailable:true,
+        isProcessCreatorAvailable:true,
+        isJiraAvailable:true,
+        isAddingStaffAvailable:true,
+        companyToken:"",
+        id: ""
+      },
+      department:{
+        id: "628ba9f94551d02fd2e33789",
+        name: "Sosunki"
+      }
+    },
   ];
 
-  Role: role[];
+  Role: Role[];
+  User: User;
 
   ngOnInit(): void {
     this.companyToken = localStorage.getItem('companyToken');
+    this.serv.getCurrentUser().subscribe(
+      (data: any) => {
+        this.User = data;
+        console.log(this.User);
+      }
+    )
     this.serv.getAllUsers(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 
         this.Users=data; 
@@ -91,12 +112,16 @@ export class UsersComponent implements OnInit {
 
   userId: any;
   togleHideAndShadow(userId){
-    // this.def.shade();
-    document.getElementById("shadow").classList.toggle("bg-shade")
-    document.getElementById("changeRole").classList.toggle("hide")
-    this.userId = userId;
+    if(this.User.role.isAddingStaffAvailable){
+      document.getElementById("shadow").classList.toggle("bg-shade")
+      document.getElementById("changeRole").classList.toggle("hide")
+      this.userId = userId;
+    }
+    else{
+      alert("You dont have permission")
+    }
   }
-  selectedRole: role;
+  selectedRole: Role;
   addRoleToUser(){
     console.log(this.selectedRole)
     this.serv.addRoleToUser(this.userId, this.selectedRole).subscribe(

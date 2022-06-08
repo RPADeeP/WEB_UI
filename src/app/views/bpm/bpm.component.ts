@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Serv } from '../services.service';
-import { Steps } from '../model'
-import { DepartmentsData } from '../dashboard/dashboard.model';
+import { Steps, DepartmentsData } from '../model';
+import { DefaultLayoutComponent } from 'src/app/containers';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bpm',
@@ -10,7 +11,7 @@ import { DepartmentsData } from '../dashboard/dashboard.model';
 })
 export class BPMComponent implements OnInit {
 
-  constructor(private serv: Serv) { }
+  constructor(private serv: Serv, private def: DefaultLayoutComponent, private router: Router) { }
 
   i:number=1;
   counter: Array<number> = new Array();
@@ -36,6 +37,9 @@ export class BPMComponent implements OnInit {
 
   Departments: DepartmentsData[];
   ngOnInit(): void {
+    if(!this.def.User.role.isAddingStaffAvailable){
+      this.router.navigate(['/departments']);
+    }
     this.counter.push(0)
     this.serv.getAllDeparts(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 

@@ -45,7 +45,8 @@ export class RegisterComponent implements OnInit {
         if (this.returnedData) {
           localStorage.setItem('companyToken', this.returnedData.companyToken); 
           localStorage.setItem('jwtToken', this.returnedData.jwtToken);
-          this.router.navigate(['/dashboard']);
+          this.serv.rewriteHttpOptions();
+          this.router.navigate(['/departments']);
         }
       }
     );

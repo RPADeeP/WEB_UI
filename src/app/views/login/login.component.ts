@@ -23,7 +23,8 @@ export class LoginComponent {
         if (this.returnedData) {
           localStorage.setItem('companyToken', this.returnedData.companyToken); 
           localStorage.setItem('jwtToken', this.returnedData.jwtToken); 
-          this.router.navigate(['/dashboard']);
+          this.serv.rewriteHttpOptions();
+          this.router.navigate(['/departments']);
         }
         else {
           console.error('ERROR');

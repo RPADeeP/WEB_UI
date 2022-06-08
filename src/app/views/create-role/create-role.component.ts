@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Serv } from '../services.service';
 import { createdRoleData} from '../model';
-
+import { DefaultLayoutComponent } from 'src/app/containers';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-role',
@@ -11,7 +12,7 @@ import { createdRoleData} from '../model';
 })
 export class CreateRoleComponent implements OnInit {
 
-  constructor(private http: HttpClient, private serv: Serv) { }
+  constructor(private http: HttpClient, private serv: Serv, private def: DefaultLayoutComponent, private router: Router) { }
 
   roleName: createdRoleData;
   isGeneralStatisticAvailable: createdRoleData;
@@ -24,6 +25,9 @@ export class CreateRoleComponent implements OnInit {
   
   returnedData: any;
   ngOnInit(): void {
+    if(!this.def.User.role.isAddingStaffAvailable){
+      this.router.navigate(['/departments']);
+    }
     this.companyToken = localStorage.getItem('companyToken');
     this.serv.getAllRoles(localStorage.getItem('companyToken')).subscribe(
       (data: any) => { 

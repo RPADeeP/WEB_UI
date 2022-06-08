@@ -109,7 +109,6 @@ export class TaskerComponent implements OnInit {
 
   hideUpdate(name, description, status, userContractor, id){
     document.getElementById("updateTask").classList.toggle("hide");
-    document.getElementById("taskerToDash").classList.toggle("hide");
     document.getElementById("shadow").classList.toggle("hide");
     document.getElementById("shadow").classList.toggle("inblock");
     this.taskName = name;
@@ -121,7 +120,6 @@ export class TaskerComponent implements OnInit {
 
   hideCreate(){
     document.getElementById("createTask").classList.toggle("hide");
-    document.getElementById("taskerToDash").classList.toggle("hide");
     document.getElementById("shadow").classList.toggle("hide");
     document.getElementById("shadow").classList.toggle("inblock");
   }
@@ -135,9 +133,9 @@ export class TaskerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // if(this.def.User.role.isJiraAvailable){
-      // console.log(this.def.User.role.isJiraAvailable)
-      // this.def.User.role.isJiraAvailable=this.userApplicant.role.isJiraAvailable;
+    if(this.def.User.role.isJiraAvailable){
+      console.log(this.def.User.role.isJiraAvailable)
+      this.def.User.role.isJiraAvailable=this.userApplicant.role.isJiraAvailable;
       this.companyToken = localStorage.getItem('companyToken');
       this.serv.getCurrentUser().subscribe(
         (data: any) => { 
@@ -157,10 +155,10 @@ export class TaskerComponent implements OnInit {
           console.log(this.Users);
         }
       )
-    // }
-    // else{
-    //   this.router.navigate(['/dashboard']);
-    // }
+    }
+    else{
+      this.router.navigate(['/departments']);
+    }
   }
 
 }
